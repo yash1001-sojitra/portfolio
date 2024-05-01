@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:portfolio/src/routes/routes.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -10,8 +12,10 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    Future.delayed(const Duration(seconds: 1, microseconds: 900), () {});
     super.initState();
+    Future.delayed(const Duration(seconds: 2), () {
+      context.goNamed(AppRoutes.HOME_ROUTE_NAME);
+    });
   }
 
   @override
@@ -21,25 +25,19 @@ class _SplashScreenState extends State<SplashScreen> {
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         // color: Colors.black,
-        child: Column(
+        child: const Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Splash Screen.',
-                    style: TextStyle(
-                      color: Theme.of(context).primaryColor,
-                      fontSize: 16,
-                    ),
-                  )
-                ],
+            CircularProgressIndicator(),
+            SizedBox(height: 20),
+            Text(
+              'Loading...',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 20,
               ),
-            )
+            ),
           ],
         ),
       ),

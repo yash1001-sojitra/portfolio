@@ -8,9 +8,14 @@ import 'package:portfolio/src/presentation/page/home/widgets/top_profile_section
 import 'package:portfolio/src/presentation/widgets/footer_app.dart';
 import 'package:portfolio/src/presentation/widgets/header_app.dart';
 
-class ErrorScreen extends StatelessWidget {
-  const ErrorScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,17 +25,12 @@ class ErrorScreen extends StatelessWidget {
             Stack(
               fit: StackFit.expand,
               children: [
-                SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      const SizedBox(height: 100),
-                      Image.asset(
-                        'assets/images/404_image.jpg',
-                        fit: BoxFit.cover,
-                      ),
-                      const FooterApp(),
-                    ],
-                  ),
+                BlocBuilder<NavigateBloc, NavigateState>(
+                  builder: (context, state) {
+                    return state.currentTab == NavTab.Home
+                        ? const TopProfileSection()
+                        : const ContectScreen();
+                  },
                 ),
                 const Positioned(
                   top: 0,

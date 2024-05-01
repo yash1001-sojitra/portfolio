@@ -3,9 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:portfolio/src/Exports/bloc_list.dart';
+import 'package:portfolio/src/blocs/navigate/navigate_bloc.dart';
 import 'package:portfolio/src/routes/go_routes.dart';
 import 'package:portfolio/injection.dart' as di;
+import 'package:responsive_framework/responsive_framework.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,17 +35,22 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: blocList,
+      providers: [
+        BlocProvider(create: (_) => di.locator<NavigateBloc>()),
+      ],
       child: MaterialApp.router(
         title: 'Yash Rank Portfolio',
-        theme: ThemeData(
-          brightness: Brightness.light,
-        ),
-        darkTheme: ThemeData(
-          brightness: Brightness.dark,
-          textTheme: ThemeData.dark().textTheme,
-        ),
         routerConfig: _router,
+        debugShowCheckedModeBanner: false,
+        builder: (context, child) => ResponsiveBreakpoints.builder(
+          breakpoints: [
+            const Breakpoint(start: 0, end: 450, name: MOBILE),
+            const Breakpoint(start: 451, end: 800, name: TABLET),
+            const Breakpoint(start: 801, end: 1920, name: DESKTOP),
+            const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
+          ],
+          child: child!,
+        ),
       ),
     );
   }
