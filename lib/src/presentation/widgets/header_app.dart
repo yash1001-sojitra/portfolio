@@ -72,22 +72,26 @@ class _AppHeaderState extends State<AppHeader> {
           _hoveredText = null;
         });
       },
-      child: GestureDetector(
-        onTap: () {
-          context.goNamed(text.name);
+      child: GestureDetector(onTap: () {
+        context.goNamed(text.name);
+      }, child: BlocBuilder<NavigateBloc, NavigateState>(
+        builder: (context, state) {
+          return Text(
+            text.name,
+            style: headerStyle.copyWith(
+              color: _hoveredText == text || state.currentTab == text
+                  ? Colors.black
+                  : Colors.grey,
+              decoration: _hoveredText == text
+                  ? TextDecoration.lineThrough
+                  : TextDecoration.none,
+              decorationThickness: 2.5,
+              decorationColor:
+                  _hoveredText == text ? Colors.black : Colors.grey,
+            ),
+          );
         },
-        child: Text(
-          text.name,
-          style: headerStyle.copyWith(
-            color: _hoveredText == text ? Colors.black : Colors.grey,
-            decoration: _hoveredText == text
-                ? TextDecoration.lineThrough
-                : TextDecoration.none,
-            decorationThickness: 2.5,
-            decorationColor: _hoveredText == text ? Colors.black : Colors.grey,
-          ),
-        ),
-      ),
+      )),
     );
   }
 
