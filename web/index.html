@@ -14,7 +14,7 @@
     This is a placeholder for base href that will be replaced by the value of
     the `--base-href` argument provided to `flutter build`.
   -->
-  <base href="$FLUTTER_BASE_HREF">
+  <base href="/">
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
@@ -29,35 +29,42 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>Yash-Rank-Portfolio</title>
+  <title>Yash Rank Portfolio</title>
   <link rel="manifest" href="manifest.json">
+ 
+
+  <style>
+   body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  color: #333;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loadview {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 5px;
+}
+  </style>
+  
 
   <script>
     // The value below is injected by flutter build, do not touch.
     const serviceWorkerVersion = null;
   </script>
 
-   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-   <script>
-        var firebaseConfig = {
-  apiKey: "AIzaSyB5XjQ7r2GOvW-GVGQebRUVtCmQaytXJcc",
-  authDomain: "portfolio-f623c.firebaseapp.com",
-  projectId: "portfolio-f623c",
-  storageBucket: "portfolio-f623c.appspot.com",
-  messagingSenderId: "226572521089",
-  appId: "1:226572521089:web:8f3a171e1b5c30809fc780",
-  measurementId: "G-5Y7KP6XCPC"
-};
-  
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-      </script>
-  
-  
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
 </head>
 <body>
+  <div class="loadview" id="load" >
+    <h1>Yash Rank</h1>
+    </div>
   <script>
     window.addEventListener('load', function(ev) {
       // Download main.dart.js
@@ -73,5 +80,7 @@
       });
     });
   </script>
-</body>
+  </body>
+
+
 </html>

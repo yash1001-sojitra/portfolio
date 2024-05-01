@@ -42,9 +42,7 @@ class _AppHeaderState extends State<AppHeader> {
         horizontalSize,
         _textHoverWidget(NavTab.About),
         horizontalSize,
-        _textHoverWidget(
-          NavTab.Works,
-        ),
+        _textHoverWidget(NavTab.Works),
         horizontalSize,
         _textHoverWidget(NavTab.Educations),
         horizontalSize,
@@ -101,7 +99,11 @@ class _AppHeaderState extends State<AppHeader> {
         Text('YR', style: logoStyle),
         const Spacer(),
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            context
+                .read<NavigateBloc>()
+                .add(const NavigateEvent.toggleDrawer());
+          },
           icon: const Icon(Icons.menu, color: Colors.black),
         ),
       ],

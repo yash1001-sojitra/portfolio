@@ -7,10 +7,14 @@ import 'package:portfolio/src/blocs/navigate/navigate_bloc.dart';
 import 'package:portfolio/src/routes/go_routes.dart';
 import 'package:portfolio/injection.dart' as di;
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   di.init();
+
+  setPathUrlStrategy();
+
   runApp(const MyApp());
 }
 

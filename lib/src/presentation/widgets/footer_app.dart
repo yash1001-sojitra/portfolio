@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:portfolio/src/comman/constant.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class FooterApp extends StatefulWidget {
@@ -26,7 +27,7 @@ class _FooterAppState extends State<FooterApp> {
           Stack(
             children: [
               SizedBox(
-                width: 500,
+                width: ResponsiveBreakpoints.of(context).isDesktop ? 500 : 400,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,11 +48,13 @@ class _FooterAppState extends State<FooterApp> {
                 right: 0,
                 child: Container(
                   alignment: Alignment.center,
-                  child: const Text(
+                  child: Text(
                     "Let's work together.",
                     style: TextStyle(
                         color: Colors.white,
-                        fontSize: 50,
+                        fontSize: ResponsiveBreakpoints.of(context).isDesktop
+                            ? 50
+                            : 35,
                         fontWeight: FontWeight.bold),
                   ),
                 ),

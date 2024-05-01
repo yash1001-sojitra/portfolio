@@ -9,9 +9,14 @@ part 'navigate_bloc.freezed.dart';
 class NavigateBloc extends Bloc<NavigateEvent, NavigateState> {
   NavigateBloc() : super(NavigateState.initial()) {
     on<NavigateEvent>((event, emit) async {
-      await event.map(changeTab: (e) async {
-        emit(NavigateState(currentTab: e.tab));
-      });
+      await event.map(
+        changeTab: (e) async {
+          emit(state.copyWith(currentTab: e.tab));
+        },
+        toggleDrawer: (e) async {
+          emit(state.copyWith(isDrawerOpen: !state.isDrawerOpen));
+        },
+      );
     });
   }
 }

@@ -7,6 +7,7 @@ import 'package:portfolio/src/presentation/page/home/contect_screen.dart';
 import 'package:portfolio/src/presentation/page/home/widgets/top_profile_section.dart';
 import 'package:portfolio/src/presentation/widgets/footer_app.dart';
 import 'package:portfolio/src/presentation/widgets/header_app.dart';
+import 'package:portfolio/src/presentation/widgets/mobile_drawer.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -27,9 +28,11 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 BlocBuilder<NavigateBloc, NavigateState>(
                   builder: (context, state) {
-                    return state.currentTab == NavTab.Home
-                        ? const TopProfileSection()
-                        : const ContectScreen();
+                    return state.isDrawerOpen
+                        ? const MobileDrawer()
+                        : state.currentTab == NavTab.Home
+                            ? const TopProfileSection()
+                            : const ContectScreen();
                   },
                 ),
                 const Positioned(

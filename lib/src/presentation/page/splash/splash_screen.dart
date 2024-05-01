@@ -29,13 +29,11 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            CircularProgressIndicator(),
-            SizedBox(height: 20),
             Text(
-              'Loading...',
+              'Yash Rank',
               style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
+                fontSize: 45,
+                fontWeight: FontWeight.w600,
               ),
             ),
           ],
