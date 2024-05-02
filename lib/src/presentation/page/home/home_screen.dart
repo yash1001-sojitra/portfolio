@@ -10,6 +10,7 @@ import 'package:portfolio/src/presentation/page/home/contect_screen.dart';
 import 'package:portfolio/src/presentation/page/home/education_screen.dart';
 import 'package:portfolio/src/presentation/page/home/experience_screen.dart';
 import 'package:portfolio/src/presentation/page/home/widgets/top_profile_section.dart';
+import 'package:portfolio/src/presentation/page/home/work_screen.dart';
 import 'package:portfolio/src/presentation/widgets/footer_app.dart';
 import 'package:portfolio/src/presentation/widgets/header_app.dart';
 import 'package:portfolio/src/presentation/widgets/mobile_drawer.dart';
@@ -34,7 +35,8 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 BlocBuilder<NavigateBloc, NavigateState>(
                   builder: (context, state) {
-                    return state.isDrawerOpen
+                    return state.isDrawerOpen &&
+                            !ResponsiveBreakpoints.of(context).isDesktop
                         ? const MobileDrawer()
                         : state.currentTab == NavTab.Home
                             ? const TopProfileSection()
@@ -42,14 +44,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ? const ContectScreen()
                                 : state.currentTab == NavTab.About
                                     ? const AboutScreen()
-                                    : state.currentTab == NavTab.Educations
-                                        ? const EductaionScreen()
-                                        : state.currentTab == NavTab.Experiences
-                                            ? const ExperienceScreen()
+                                    : state.currentTab == NavTab.Works
+                                        ? const WorksScreen()
+                                        : state.currentTab == NavTab.Educations
+                                            ? const EductaionScreen()
                                             : state.currentTab ==
-                                                    NavTab.Certifications
-                                                ? const CertificationScreen()
-                                                : const ErrorScreen();
+                                                    NavTab.Experiences
+                                                ? const ExperienceScreen()
+                                                : state.currentTab ==
+                                                        NavTab.Certifications
+                                                    ? const CertificationScreen()
+                                                    : const ErrorScreen();
                   },
                 ),
                 const Positioned(

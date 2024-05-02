@@ -39,16 +39,7 @@ GoRouter createRouter() => GoRouter(
             return const HomeScreen();
           },
         ),
-        GoRoute(
-          name: AppRoutes.CONTACT_ROUTE_NAME,
-          path: AppRoutes.CONTACT_ROUTE_PATH,
-          builder: (BuildContext context, GoRouterState state) {
-            context
-                .read<NavigateBloc>()
-                .add(const NavigateEvent.changeTab(tab: NavTab.Contact));
-            return const HomeScreen();
-          },
-        ),
+
         GoRoute(
           name: AppRoutes.ABOUT_ROUTE_NAME,
           path: AppRoutes.ABOUT_ROUTE_PATH,
@@ -56,6 +47,17 @@ GoRouter createRouter() => GoRouter(
             context
                 .read<NavigateBloc>()
                 .add(const NavigateEvent.changeTab(tab: NavTab.About));
+            return const HomeScreen();
+          },
+        ),
+
+        GoRoute(
+          name: AppRoutes.WORKS_ROUTE_NAME,
+          path: AppRoutes.WORKS_ROUTE_PATH,
+          builder: (BuildContext context, GoRouterState state) {
+            context
+                .read<NavigateBloc>()
+                .add(const NavigateEvent.changeTab(tab: NavTab.Works));
             return const HomeScreen();
           },
         ),
@@ -89,6 +91,16 @@ GoRouter createRouter() => GoRouter(
             context
                 .read<NavigateBloc>()
                 .add(const NavigateEvent.changeTab(tab: NavTab.Certifications));
+            return const HomeScreen();
+          },
+        ),
+        GoRoute(
+          name: AppRoutes.CONTACT_ROUTE_NAME,
+          path: AppRoutes.CONTACT_ROUTE_PATH,
+          builder: (BuildContext context, GoRouterState state) {
+            context
+                .read<NavigateBloc>()
+                .add(const NavigateEvent.changeTab(tab: NavTab.Contact));
             return const HomeScreen();
           },
         ),

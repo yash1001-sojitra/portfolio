@@ -20,28 +20,31 @@ class _MobileDrawerState extends State<MobileDrawer> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const SizedBox(height: 100),
-        _textHoverWidget(NavTab.Home, 0),
-        verticalSize,
-        _textHoverWidget(NavTab.About, 1),
-        verticalSize,
-        _textHoverWidget(NavTab.Works, 2),
-        verticalSize,
-        _textHoverWidget(NavTab.Educations, 3),
-        verticalSize,
-        _textHoverWidget(NavTab.Experiences, 4),
-        verticalSize,
-        _textHoverWidget(NavTab.Certifications, 5),
-        verticalSize,
-        _textHoverWidget(NavTab.Contact, 6),
-        verticalSize,
-        verticalSize,
-        const DownloadResume(),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const SizedBox(height: 100),
+          _textHoverWidget(NavTab.Home, 0),
+          verticalSize,
+          _textHoverWidget(NavTab.About, 1),
+          verticalSize,
+          _textHoverWidget(NavTab.Works, 2),
+          verticalSize,
+          _textHoverWidget(NavTab.Educations, 3),
+          verticalSize,
+          _textHoverWidget(NavTab.Experiences, 4),
+          verticalSize,
+          _textHoverWidget(NavTab.Certifications, 5),
+          verticalSize,
+          _textHoverWidget(NavTab.Contact, 6),
+          verticalSize,
+          verticalSize,
+          const DownloadResume(),
+          const SizedBox(height: 50)
+        ],
+      ),
     );
   }
 

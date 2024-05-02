@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:go_router/go_router.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:portfolio/src/comman/constant.dart';
+import 'package:portfolio/src/comman/enum.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -89,55 +91,60 @@ class _FooterAppState extends State<FooterApp> {
                     isHovered = false;
                   });
                 },
-                child: Stack(
-                  children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Stack(
-                          children: [
-                            const SizedBox(
-                              height: 50,
-                              width: 150,
-                            ),
-                            AnimatedContainer(
-                              duration: const Duration(milliseconds: 500),
-                              height: 50,
-                              width: isHovered ? 150 : 50,
-                              decoration: BoxDecoration(
-                                color: Colors.grey.withOpacity(0.1),
-                                borderRadius: BorderRadius.circular(50),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    const Positioned(
-                      top: 0,
-                      left: 20,
-                      right: 0,
-                      bottom: 0,
-                      child: Row(
+                child: GestureDetector(
+                  onTap: () {
+                    context.goNamed(NavTab.Contact.name);
+                  },
+                  child: Stack(
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Text(
-                            "SAY HELLO",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15,
-                            ),
+                          Stack(
+                            children: [
+                              const SizedBox(
+                                height: 50,
+                                width: 150,
+                              ),
+                              AnimatedContainer(
+                                duration: const Duration(milliseconds: 500),
+                                height: 50,
+                                width: isHovered ? 150 : 50,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey.withOpacity(0.1),
+                                  borderRadius: BorderRadius.circular(50),
+                                ),
+                              ),
+                            ],
                           ),
-                          SizedBox(width: 10),
-                          Icon(
-                            Icons.arrow_forward,
-                            color: Colors.white,
-                          )
                         ],
                       ),
-                    ),
-                  ],
+                      const Positioned(
+                        top: 0,
+                        left: 20,
+                        right: 0,
+                        bottom: 0,
+                        child: Row(
+                          children: [
+                            Text(
+                              "SAY HELLO",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                              ),
+                            ),
+                            SizedBox(width: 10),
+                            Icon(
+                              Icons.arrow_forward,
+                              color: Colors.white,
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
@@ -191,11 +198,11 @@ class _FooterAppState extends State<FooterApp> {
             child: const Row(
               children: [
                 Icon(Bootstrap.github, color: Colors.white),
-                SizedBox(width: 10),
-                Text(
-                  'Github',
-                  style: TextStyle(color: Colors.white),
-                ),
+                // SizedBox(width: 10),
+                // Text(
+                //   'Github',
+                //   style: TextStyle(color: Colors.white),
+                // ),
               ],
             ),
           ),
@@ -215,8 +222,8 @@ class _FooterAppState extends State<FooterApp> {
             child: const Row(
               children: [
                 Icon(Bootstrap.linkedin, color: Colors.white),
-                SizedBox(width: 10),
-                Text('Linkedin', style: TextStyle(color: Colors.white)),
+                // SizedBox(width: 10),
+                // Text('Linkedin', style: TextStyle(color: Colors.white)),
               ],
             ),
           ),
@@ -236,8 +243,8 @@ class _FooterAppState extends State<FooterApp> {
             child: const Row(
               children: [
                 Icon(Bootstrap.medium, color: Colors.white),
-                SizedBox(width: 10),
-                Text('Medium', style: TextStyle(color: Colors.white)),
+                // SizedBox(width: 10),
+                // Text('Medium', style: TextStyle(color: Colors.white)),
               ],
             ),
           ),

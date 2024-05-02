@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:portfolio/src/comman/constant.dart';
 import 'package:portfolio/src/comman/text_style.dart';
+import 'package:portfolio/src/presentation/page/home/data/work_data.dart';
+import 'package:portfolio/src/presentation/page/home/widgets/work_data_section.dart';
 import 'package:portfolio/src/presentation/widgets/footer_app.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -77,6 +79,7 @@ class _TopProfileSectionState extends State<TopProfileSection>
                 )
               ],
             ),
+            const WorkData(),
             const FooterApp(),
           ],
         ),
