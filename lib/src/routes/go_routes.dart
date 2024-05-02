@@ -8,6 +8,7 @@ import 'package:portfolio/src/comman/enum.dart';
 import 'package:portfolio/src/presentation/page/Error/error_screen.dart';
 import 'package:portfolio/src/presentation/page/home/home_screen.dart';
 import 'package:portfolio/src/presentation/page/splash/splash_screen.dart';
+import 'package:portfolio/src/presentation/widgets/photo_view.dart';
 import 'package:portfolio/src/routes/routes.dart';
 
 GoRouter createRouter() => GoRouter(
@@ -89,6 +90,17 @@ GoRouter createRouter() => GoRouter(
                 .read<NavigateBloc>()
                 .add(const NavigateEvent.changeTab(tab: NavTab.Certifications));
             return const HomeScreen();
+          },
+        ),
+
+        GoRoute(
+          name: AppRoutes.PHOTO_VIEW_ROUTE_NAME,
+          path: AppRoutes.PHOTO_VIEW_ROUTE_PATH,
+          builder: (BuildContext context, GoRouterState state) {
+            final String? url = state.pathParameters['photoUrl'];
+            return CertiView(
+              url: url ?? '0',
+            );
           },
         ),
       ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:portfolio/src/blocs/navigate/navigate_bloc.dart';
@@ -24,19 +25,19 @@ class _MobileDrawerState extends State<MobileDrawer> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const SizedBox(height: 100),
-        _textHoverWidget(NavTab.Home),
+        _textHoverWidget(NavTab.Home, 0),
         verticalSize,
-        _textHoverWidget(NavTab.About),
+        _textHoverWidget(NavTab.About, 1),
         verticalSize,
-        _textHoverWidget(NavTab.Works),
+        _textHoverWidget(NavTab.Works, 2),
         verticalSize,
-        _textHoverWidget(NavTab.Educations),
+        _textHoverWidget(NavTab.Educations, 3),
         verticalSize,
-        _textHoverWidget(NavTab.Experiences),
+        _textHoverWidget(NavTab.Experiences, 4),
         verticalSize,
-        _textHoverWidget(NavTab.Certifications),
+        _textHoverWidget(NavTab.Certifications, 5),
         verticalSize,
-        _textHoverWidget(NavTab.Contact),
+        _textHoverWidget(NavTab.Contact, 6),
         verticalSize,
         verticalSize,
         const DownloadResume(),
@@ -44,7 +45,7 @@ class _MobileDrawerState extends State<MobileDrawer> {
     );
   }
 
-  Widget _textHoverWidget(NavTab text) {
+  Widget _textHoverWidget(NavTab text, int index) {
     return MouseRegion(
         cursor: SystemMouseCursors.click,
         onEnter: (event) {
@@ -68,20 +69,57 @@ class _MobileDrawerState extends State<MobileDrawer> {
                 }
                 context.goNamed(text.name);
               },
-              child: Text(
-                text.name,
-                style: headerStyle.copyWith(
-                  color: _hoveredText == text || state.currentTab == text
-                      ? Colors.black
-                      : Colors.grey,
-                  decoration: _hoveredText == text
-                      ? TextDecoration.lineThrough
-                      : TextDecoration.none,
-                  decorationThickness: 2.5,
-                  decorationColor:
-                      _hoveredText == text ? Colors.black : Colors.grey,
-                  fontSize: 30,
-                ),
+              child: Stack(
+                children: [
+                  Container(
+                    alignment: Alignment.center,
+                    child: _hoveredText == text
+                        ? SizedBox(
+                            height: 100,
+                            width: 200,
+                            child: Text(
+                              "0$index",
+                              textAlign: TextAlign.center,
+                              style: headerStyle.copyWith(
+                                fontSize: 70,
+                                color: Colors.grey[200],
+                              ),
+                            ),
+                          )
+                        : const SizedBox(
+                            height: 50,
+                            width: 200,
+                          ),
+                  ),
+                  Positioned(
+                    left: 0,
+                    right: 0,
+                    top: 0,
+                    bottom: 0,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          text.name,
+                          style: headerStyle.copyWith(
+                            color:
+                                _hoveredText == text || state.currentTab == text
+                                    ? Colors.black
+                                    : Colors.grey,
+                            // decoration: _hoveredText == text
+                            //     ? TextDecoration.lineThrough
+                            //     : TextDecoration.none,
+                            // decorationThickness: 2.5,
+                            // decorationColor: _hoveredText == text
+                            //     ? Colors.black
+                            //     : Colors.grey,
+                            fontSize: 30,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ));
         }));
   }

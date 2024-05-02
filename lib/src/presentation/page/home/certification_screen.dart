@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/src/presentation/widgets/footer_app.dart';
+import 'package:portfolio/src/presentation/widgets/view_certi_widget.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+
+import 'package:portfolio/src/presentation/widgets/footer_app.dart';
 
 class CertificationScreen extends StatefulWidget {
   const CertificationScreen({super.key});
@@ -119,7 +121,7 @@ class _CertificationScreenState extends State<CertificationScreen>
           const SizedBox(height: 20),
           ResponsiveBreakpoints.of(context).isDesktop
               ? gridViewImage()
-              : ListViewImage(),
+              : listViewImage(),
           const SizedBox(height: 50),
         ],
       ),
@@ -127,38 +129,104 @@ class _CertificationScreenState extends State<CertificationScreen>
   }
 
   Widget gridViewImage() {
-    return GridView.builder(
+    return ListView.builder(
       shrinkWrap: true,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        childAspectRatio: 1.0,
-      ),
-      itemCount: 15,
+      itemCount: (15 / 2).ceil(), // Ensure to ceil the division result
       itemBuilder: (context, index) {
-        return Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Image.asset(
-            "assets/certi/certi${index - 1}.png",
-            fit: BoxFit.contain,
-          ),
+        final firstItem = index * 2;
+        final secondItem = firstItem + 1;
+        return Row(
+          children: [
+            Expanded(
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width / 2,
+                child: ImageHover(
+                  index: firstItem,
+                ),
+              ),
+            ),
+            Expanded(
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width / 2,
+                child: secondItem < 15
+                    ? ImageHover(index: secondItem)
+                    : const SizedBox(),
+              ),
+            ),
+          ],
         );
       },
     );
   }
 
-  Widget ListViewImage() {
+  Widget listViewImage() {
     return ListView.builder(
       shrinkWrap: true,
       itemCount: 15,
       itemBuilder: (context, index) {
-        return Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Image.asset(
-            "assets/certi/certi${index - 1}.png",
-            fit: BoxFit.contain,
-          ),
+        return ImageHover(
+          index: index,
         );
       },
+    );
+  }
+}
+
+class ImageHover extends StatefulWidget {
+  int index;
+  ImageHover({
+    Key? key,
+    required this.index,
+  }) : super(key: key);
+
+  @override
+  State<ImageHover> createState() => _ImageHoverState();
+}
+
+class _ImageHoverState extends State<ImageHover> {
+  bool isHovered = false;
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      onEnter: (event) {
+        setState(() {
+          isHovered = true;
+        });
+      },
+      onExit: (event) {
+        setState(() {
+          isHovered = false;
+        });
+      },
+      child: Stack(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Image.asset(
+              "assets/certi/certi${widget.index - 1}.png",
+              fit: BoxFit.contain,
+            ),
+          ),
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 50,
+            child: Container(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  ViewCerti(
+                    url: "${widget.index - 1}",
+                  ),
+                  const SizedBox(height: 10),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -21,4 +21,7 @@ class AppRoutes {
 
   static const String CERTIFICATION_ROUTE_NAME = 'Certifications';
   static const String CERTIFICATION_ROUTE_PATH = '/certification';
+
+  static const String PHOTO_VIEW_ROUTE_NAME = 'PhotoView';
+  static const String PHOTO_VIEW_ROUTE_PATH = '/photo_view:photoUrl';
 }

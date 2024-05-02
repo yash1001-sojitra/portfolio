@@ -148,12 +148,15 @@ class _TextDataSectionState extends State<TextDataSection> {
                   const SizedBox(height: 10),
                   Row(
                     children: [
-                      Text(
-                        widget.title,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width - 70,
+                        child: Text(
+                          widget.title,
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ],
@@ -161,11 +164,14 @@ class _TextDataSectionState extends State<TextDataSection> {
                   const SizedBox(height: 10),
                   Row(
                     children: [
-                      Text(
-                        widget.description,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 15,
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width - 70,
+                        child: Text(
+                          widget.description,
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 15,
+                          ),
                         ),
                       ),
                     ],
