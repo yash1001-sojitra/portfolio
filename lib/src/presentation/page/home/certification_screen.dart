@@ -130,6 +130,7 @@ class _CertificationScreenState extends State<CertificationScreen>
 
   Widget gridViewImage() {
     return ListView.builder(
+      physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemCount: (15 / 2).ceil(), // Ensure to ceil the division result
       itemBuilder: (context, index) {
@@ -161,6 +162,7 @@ class _CertificationScreenState extends State<CertificationScreen>
 
   Widget listViewImage() {
     return ListView.builder(
+      physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemCount: 15,
       itemBuilder: (context, index) {

@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "yash-rank-portfolio1001",
     "public": "build/web",
     "ignore": [
       "firebase.json",

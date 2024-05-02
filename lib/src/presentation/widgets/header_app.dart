@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:portfolio/src/blocs/navigate/navigate_bloc.dart';
@@ -36,7 +38,14 @@ class _AppHeaderState extends State<AppHeader> {
   Widget _desktopHeader() {
     return Row(
       children: [
-        Text('YR', style: logoStyle),
+        MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: GestureDetector(
+              onTap: () {
+                context.goNamed(NavTab.Home.name);
+              },
+              child: Text('YR', style: logoStyle)),
+        ),
         const Spacer(),
         _textHoverWidget(NavTab.Home),
         horizontalSize,
@@ -96,7 +105,14 @@ class _AppHeaderState extends State<AppHeader> {
   Widget _mobileHeader() {
     return Row(
       children: [
-        Text('YR', style: logoStyle),
+        MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: GestureDetector(
+              onTap: () {
+                context.goNamed(NavTab.Home.name);
+              },
+              child: Text('YR', style: logoStyle)),
+        ),
         const Spacer(),
         IconButton(
           onPressed: () {

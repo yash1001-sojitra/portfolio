@@ -4,12 +4,15 @@ import 'package:flutter/animation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:go_router/go_router.dart';
 import 'package:portfolio/src/comman/constant.dart';
+import 'package:portfolio/src/comman/enum.dart';
 import 'package:portfolio/src/comman/text_style.dart';
 import 'package:portfolio/src/presentation/page/home/data/work_data.dart';
 import 'package:portfolio/src/presentation/page/home/widgets/work_data_section.dart';
 import 'package:portfolio/src/presentation/widgets/footer_app.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:portfolio/src/routes/routes.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -46,37 +49,39 @@ class _TopProfileSectionState extends State<TopProfileSection>
                 ResponsiveBreakpoints.of(context).isDesktop
                     ? profileDesktopSection()
                     : profileMobileSection(),
-                Positioned(
-                  right: 0,
-                  bottom: 50,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 0),
-                    child: Container(
-                      color: Colors.transparent,
-                      child: Transform.rotate(
-                        angle: 3.14 / 2, // Change rotation angle
-                        child: const Padding(
-                          padding: EdgeInsets.only(
-                            left: 8.0,
-                            right: 8.0,
-                          ),
-                          child: Row(
-                            children: [
-                              Text(
-                                'Scroll Down',
-                                style: TextStyle(color: Colors.black),
+                ResponsiveBreakpoints.of(context).isDesktop
+                    ? Positioned(
+                        right: 0,
+                        bottom: 50,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 0),
+                          child: Container(
+                            color: Colors.transparent,
+                            child: Transform.rotate(
+                              angle: 3.14 / 2, // Change rotation angle
+                              child: const Padding(
+                                padding: EdgeInsets.only(
+                                  left: 8.0,
+                                  right: 8.0,
+                                ),
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      'Scroll Down',
+                                      style: TextStyle(color: Colors.black),
+                                    ),
+                                    Icon(
+                                      Icons.arrow_forward,
+                                      color: Colors.black,
+                                    )
+                                  ],
+                                ),
                               ),
-                              Icon(
-                                Icons.arrow_forward,
-                                color: Colors.black,
-                              )
-                            ],
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-                  ),
-                )
+                      )
+                    : const SizedBox()
               ],
             ),
             const WorkData(),
@@ -166,57 +171,63 @@ class _TopProfileSectionState extends State<TopProfileSection>
                                 isHovered = false;
                               });
                             },
-                            child: Stack(
-                              children: [
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Stack(
-                                      children: [
-                                        const SizedBox(
-                                          height: 50,
-                                          width: 180,
-                                        ),
-                                        AnimatedContainer(
-                                          duration:
-                                              const Duration(milliseconds: 500),
-                                          height: 50,
-                                          width: isHovered ? 170 : 50,
-                                          decoration: BoxDecoration(
-                                            color: Colors.grey[50],
-                                            borderRadius:
-                                                BorderRadius.circular(50),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                const Positioned(
-                                  top: 0,
-                                  left: 20,
-                                  right: 0,
-                                  bottom: 0,
-                                  child: Row(
+                            child: GestureDetector(
+                              onTap: () {
+                                context.goNamed(NavTab.Works.name);
+                              },
+                              child: Stack(
+                                children: [
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
-                                      Text(
-                                        "SEE MY WORKS",
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 15,
-                                        ),
+                                      Stack(
+                                        children: [
+                                          const SizedBox(
+                                            height: 50,
+                                            width: 180,
+                                          ),
+                                          AnimatedContainer(
+                                            duration: const Duration(
+                                                milliseconds: 500),
+                                            height: 50,
+                                            width: isHovered ? 170 : 50,
+                                            decoration: BoxDecoration(
+                                              color: Colors.grey[50],
+                                              borderRadius:
+                                                  BorderRadius.circular(50),
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                      SizedBox(width: 10),
-                                      Icon(
-                                        Icons.arrow_forward,
-                                        color: Colors.black,
-                                      )
                                     ],
                                   ),
-                                ),
-                              ],
+                                  const Positioned(
+                                    top: 0,
+                                    left: 20,
+                                    right: 0,
+                                    bottom: 0,
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          "SEE MY WORKS",
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 15,
+                                          ),
+                                        ),
+                                        SizedBox(width: 10),
+                                        Icon(
+                                          Icons.arrow_forward,
+                                          color: Colors.black,
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                           const SizedBox(height: 50),
@@ -298,55 +309,61 @@ class _TopProfileSectionState extends State<TopProfileSection>
                           isHovered = false;
                         });
                       },
-                      child: Stack(
-                        children: [
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Stack(
-                                children: [
-                                  const SizedBox(
-                                    height: 50,
-                                    width: 180,
-                                  ),
-                                  AnimatedContainer(
-                                    duration: const Duration(milliseconds: 500),
-                                    height: 50,
-                                    width: isHovered ? 170 : 50,
-                                    decoration: BoxDecoration(
-                                      color: Colors.grey[50],
-                                      borderRadius: BorderRadius.circular(50),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          const Positioned(
-                            top: 0,
-                            left: 20,
-                            right: 0,
-                            bottom: 0,
-                            child: Row(
+                      child: GestureDetector(
+                        onTap: () {
+                          context.goNamed(NavTab.Works.name);
+                        },
+                        child: Stack(
+                          children: [
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Text(
-                                  "SEE MY WORKS",
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15,
-                                  ),
+                                Stack(
+                                  children: [
+                                    const SizedBox(
+                                      height: 50,
+                                      width: 180,
+                                    ),
+                                    AnimatedContainer(
+                                      duration:
+                                          const Duration(milliseconds: 500),
+                                      height: 50,
+                                      width: isHovered ? 170 : 50,
+                                      decoration: BoxDecoration(
+                                        color: Colors.grey[50],
+                                        borderRadius: BorderRadius.circular(50),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                SizedBox(width: 10),
-                                Icon(
-                                  Icons.arrow_forward,
-                                  color: Colors.black,
-                                )
                               ],
                             ),
-                          ),
-                        ],
+                            const Positioned(
+                              top: 0,
+                              left: 20,
+                              right: 0,
+                              bottom: 0,
+                              child: Row(
+                                children: [
+                                  Text(
+                                    "SEE MY WORKS",
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                  SizedBox(width: 10),
+                                  Icon(
+                                    Icons.arrow_forward,
+                                    color: Colors.black,
+                                  )
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     const SizedBox(height: 50),

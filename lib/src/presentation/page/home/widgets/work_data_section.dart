@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -156,9 +157,12 @@ class _WorkDataSectionState extends State<WorkDataSection> {
               crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Image.asset(
-                  widget.image,
-                  height: 200,
+                Opacity(
+                  opacity: 0.5,
+                  child: Image.asset(
+                    widget.image,
+                    height: 200,
+                  ),
                 ),
               ],
             ),
@@ -222,8 +226,9 @@ class _WorkDataSectionState extends State<WorkDataSection> {
                 child: Text(
                   widget.description,
                   style: const TextStyle(
-                    color: Colors.grey,
+                    color: Colors.black,
                     letterSpacing: 1.5,
+                    fontWeight: FontWeight.w600,
                     fontSize: 14,
                   ),
                 ),
