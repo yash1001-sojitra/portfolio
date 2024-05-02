@@ -48,6 +48,49 @@ GoRouter createRouter() => GoRouter(
             return const HomeScreen();
           },
         ),
+        GoRoute(
+          name: AppRoutes.ABOUT_ROUTE_NAME,
+          path: AppRoutes.ABOUT_ROUTE_PATH,
+          builder: (BuildContext context, GoRouterState state) {
+            context
+                .read<NavigateBloc>()
+                .add(const NavigateEvent.changeTab(tab: NavTab.About));
+            return const HomeScreen();
+          },
+        ),
+
+        GoRoute(
+          name: AppRoutes.EDUCATION_ROUTE_NAME,
+          path: AppRoutes.EDUCATION_ROUTE_PATH,
+          builder: (BuildContext context, GoRouterState state) {
+            context
+                .read<NavigateBloc>()
+                .add(const NavigateEvent.changeTab(tab: NavTab.Educations));
+            return const HomeScreen();
+          },
+        ),
+
+        GoRoute(
+          name: AppRoutes.EXPERIENCE_ROUTE_NAME,
+          path: AppRoutes.EXPERIENCE_ROUTE_PATH,
+          builder: (BuildContext context, GoRouterState state) {
+            context
+                .read<NavigateBloc>()
+                .add(const NavigateEvent.changeTab(tab: NavTab.Experiences));
+            return const HomeScreen();
+          },
+        ),
+
+        GoRoute(
+          name: AppRoutes.CERTIFICATION_ROUTE_NAME,
+          path: AppRoutes.CERTIFICATION_ROUTE_PATH,
+          builder: (BuildContext context, GoRouterState state) {
+            context
+                .read<NavigateBloc>()
+                .add(const NavigateEvent.changeTab(tab: NavTab.Certifications));
+            return const HomeScreen();
+          },
+        ),
       ],
       errorPageBuilder: (context, state) {
         return const MaterialPage(child: ErrorScreen());

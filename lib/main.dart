@@ -45,6 +45,7 @@ class _MyAppState extends State<MyApp> {
       child: MaterialApp.router(
         title: 'Yash Rank Portfolio',
         routerConfig: _router,
+        theme: ThemeData(fontFamily: "TimesNewRoman"),
         debugShowCheckedModeBanner: false,
         builder: (context, child) => ResponsiveBreakpoints.builder(
           breakpoints: [

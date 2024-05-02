@@ -38,7 +38,9 @@ class _ContectScreenState extends State<ContectScreen> {
 
   Widget contectDesktopSection() {
     return Padding(
-      padding: const EdgeInsets.only(left: 100, right: 100),
+      padding: ResponsiveBreakpoints.of(context).isDesktop
+          ? const EdgeInsets.only(left: 100, right: 100)
+          : const EdgeInsets.only(left: 50, right: 50),
       child: Container(
         width: MediaQuery.of(context).size.width,
         color: Colors.transparent,
@@ -65,7 +67,7 @@ class _ContectScreenState extends State<ContectScreen> {
             Container(
               width: ResponsiveBreakpoints.of(context).isDesktop
                   ? MediaQuery.of(context).size.width / 2
-                  : MediaQuery.of(context).size.width / 1.5,
+                  : MediaQuery.of(context).size.width / 1,
               decoration: const BoxDecoration(
                 border: Border(
                   bottom: BorderSide(
@@ -86,7 +88,7 @@ class _ContectScreenState extends State<ContectScreen> {
             Container(
               width: ResponsiveBreakpoints.of(context).isDesktop
                   ? MediaQuery.of(context).size.width / 2
-                  : MediaQuery.of(context).size.width / 1.5,
+                  : MediaQuery.of(context).size.width / 1,
               decoration: const BoxDecoration(
                 border: Border(
                   bottom: BorderSide(
@@ -107,7 +109,7 @@ class _ContectScreenState extends State<ContectScreen> {
             Container(
               width: ResponsiveBreakpoints.of(context).isDesktop
                   ? MediaQuery.of(context).size.width / 2
-                  : MediaQuery.of(context).size.width / 1.5,
+                  : MediaQuery.of(context).size.width / 1,
               decoration: const BoxDecoration(
                 border: Border(
                   bottom: BorderSide(
@@ -128,7 +130,7 @@ class _ContectScreenState extends State<ContectScreen> {
             Container(
               width: ResponsiveBreakpoints.of(context).isDesktop
                   ? MediaQuery.of(context).size.width / 2
-                  : MediaQuery.of(context).size.width / 1.5,
+                  : MediaQuery.of(context).size.width / 1,
               decoration: const BoxDecoration(
                 border: Border(
                   bottom: BorderSide(
@@ -150,7 +152,7 @@ class _ContectScreenState extends State<ContectScreen> {
             SizedBox(
               width: ResponsiveBreakpoints.of(context).isDesktop
                   ? MediaQuery.of(context).size.width / 2
-                  : MediaQuery.of(context).size.width / 1.5,
+                  : MediaQuery.of(context).size.width / 1,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [

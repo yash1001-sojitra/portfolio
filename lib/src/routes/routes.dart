@@ -9,4 +9,16 @@ class AppRoutes {
 
   static const String CONTACT_ROUTE_NAME = 'Contact';
   static const String CONTACT_ROUTE_PATH = '/contact';
+
+  static const String ABOUT_ROUTE_NAME = 'About';
+  static const String ABOUT_ROUTE_PATH = '/about';
+
+  static const String EDUCATION_ROUTE_NAME = 'Educations';
+  static const String EDUCATION_ROUTE_PATH = '/education';
+
+  static const String EXPERIENCE_ROUTE_NAME = 'Experiences';
+  static const String EXPERIENCE_ROUTE_PATH = '/experience';
+
+  static const String CERTIFICATION_ROUTE_NAME = 'Certifications';
+  static const String CERTIFICATION_ROUTE_PATH = '/certification';
 }
