@@ -54,11 +54,14 @@ dependencies:
   firebase_messaging: ^14.9.1
   cloud_firestore: ^4.17.2 
 
-  weatherapi:
-    path: ../openapi/api/weatherapi
+  # weatherapi:
+  #   path: ../openapi/api/weatherapi
 
-  petapi: 
-    path: ../openapi/api/petapi
+  # petapi: 
+  #   path: ../openapi/api/petapi
+
+  museumapi:
+    path: ../openapi/api/museumapi
 
     
 dev_dependencies:
@@ -68,7 +71,7 @@ dev_dependencies:
   very_good_analysis: ^3.1.0
   flutter_lints: ^2.0.0
   freezed: ^2.3.2
-  flutter_gen_runner: ^5.3.2
+  # flutter_gen_runner: ^5.3.2
 
 
 # For information on the generic Dart part of this file, see the

@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
+import 'package:portfolio/src/blocs/blogs/blogs_bloc.dart';
 import 'package:portfolio/src/blocs/navigate/navigate_bloc.dart';
 import 'package:portfolio/src/routes/go_routes.dart';
 import 'package:portfolio/injection.dart' as di;
@@ -61,6 +62,7 @@ class _MyAppState extends State<MyApp> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => di.locator<NavigateBloc>()),
+        BlocProvider(create: (_) => di.locator<BlogsBloc>()),
       ],
       child: MaterialApp.router(
         title: 'Yash Rank Portfolio',

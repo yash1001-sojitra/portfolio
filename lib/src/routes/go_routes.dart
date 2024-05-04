@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:portfolio/main.dart';
+import 'package:portfolio/src/blocs/blogs/blogs_bloc.dart';
 import 'package:portfolio/src/blocs/navigate/navigate_bloc.dart';
 import 'package:portfolio/src/comman/enum.dart';
 import 'package:portfolio/src/datasource/push_notification.dart';
@@ -125,6 +126,8 @@ GoRouter createRouter() => GoRouter(
             context
                 .read<NavigateBloc>()
                 .add(const NavigateEvent.changeTab(tab: NavTab.Blogs));
+
+            context.read<BlogsBloc>().add(const BlogsEvent.fetchBlogs());
 
             return const HomeScreen();
           },
