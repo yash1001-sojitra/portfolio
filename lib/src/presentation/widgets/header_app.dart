@@ -63,6 +63,8 @@ class _AppHeaderState extends State<AppHeader> {
         horizontalSize,
         _textHoverWidget(NavTab.Blogs),
         horizontalSize,
+        _textHoverWidget(NavTab.Weather),
+        horizontalSize,
         const DownloadResume(),
       ],
     );

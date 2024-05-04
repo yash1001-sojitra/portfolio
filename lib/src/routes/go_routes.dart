@@ -3,11 +3,9 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:portfolio/main.dart';
-import 'package:portfolio/src/blocs/blogs/blogs_bloc.dart';
 import 'package:portfolio/src/blocs/navigate/navigate_bloc.dart';
+import 'package:portfolio/src/blocs/weather/weather_bloc.dart';
 import 'package:portfolio/src/comman/enum.dart';
-import 'package:portfolio/src/datasource/push_notification.dart';
 import 'package:portfolio/src/presentation/page/Error/error_screen.dart';
 import 'package:portfolio/src/presentation/page/home/home_screen.dart';
 import 'package:portfolio/src/presentation/page/splash/splash_screen.dart';
@@ -127,11 +125,24 @@ GoRouter createRouter() => GoRouter(
                 .read<NavigateBloc>()
                 .add(const NavigateEvent.changeTab(tab: NavTab.Blogs));
 
-            context.read<BlogsBloc>().add(const BlogsEvent.fetchBlogs());
+       
 
             return const HomeScreen();
           },
         ),
+
+        GoRoute(
+          name: AppRoutes.WEATHER_ROUTE_NAME,
+          path: AppRoutes.WEATHER_ROUTE_PATH,
+          builder: (BuildContext context, GoRouterState state) {
+            context
+                .read<NavigateBloc>()
+                .add(const NavigateEvent.changeTab(tab: NavTab.Weather));
+                     context.read<WeatherBloc>().add(const WeatherEvent.fetchWeather());
+            return const HomeScreen();
+          },
+        ),
+
       ],
       errorPageBuilder: (context, state) {
         return const MaterialPage(child: ErrorScreen());

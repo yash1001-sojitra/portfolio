@@ -8,16 +8,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
-import 'package:portfolio/src/blocs/blogs/blogs_bloc.dart';
 import 'package:portfolio/src/blocs/navigate/navigate_bloc.dart';
+import 'package:portfolio/src/blocs/weather/weather_bloc.dart';
 import 'package:portfolio/src/routes/go_routes.dart';
 import 'package:portfolio/injection.dart' as di;
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:url_strategy/url_strategy.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 String? token;
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: "dotenv");
   di.init();
 
   setPathUrlStrategy();
@@ -62,7 +64,7 @@ class _MyAppState extends State<MyApp> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => di.locator<NavigateBloc>()),
-        BlocProvider(create: (_) => di.locator<BlogsBloc>()),
+        BlocProvider(create: (_) => di.locator<WeatherBloc>()),
       ],
       child: MaterialApp.router(
         title: 'Yash Rank Portfolio',

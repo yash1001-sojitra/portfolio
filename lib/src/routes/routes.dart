@@ -30,4 +30,8 @@ class AppRoutes {
 
   static const String BLOG_ROUTE_NAME = 'Blogs';
   static const String BLOG_ROUTE_PATH = '/blog';
+
+  // weather
+  static const String WEATHER_ROUTE_NAME = 'Weather';
+  static const String WEATHER_ROUTE_PATH = '/weather';
 }

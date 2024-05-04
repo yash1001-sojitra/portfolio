@@ -13,6 +13,7 @@ import 'package:portfolio/src/presentation/page/home/certification_screen.dart';
 import 'package:portfolio/src/presentation/page/home/contect_screen.dart';
 import 'package:portfolio/src/presentation/page/home/education_screen.dart';
 import 'package:portfolio/src/presentation/page/home/experience_screen.dart';
+import 'package:portfolio/src/presentation/page/home/weather_screen.dart';
 import 'package:portfolio/src/presentation/page/home/widgets/top_profile_section.dart';
 import 'package:portfolio/src/presentation/page/home/work_screen.dart';
 import 'package:portfolio/src/presentation/widgets/footer_app.dart';
@@ -60,7 +61,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 : state.currentTab ==
                                                         NavTab.Blogs
                                                     ? const BlogsScreen()
-                                                    : const ErrorScreen(),
+                                                    :  state.currentTab ==
+                                                        NavTab.Weather ?
+                                                        const WeatherScreen()
+                                                        :
+                                                    
+                                                    const ErrorScreen(),
                 const Positioned(
                   top: 0,
                   left: 0,
