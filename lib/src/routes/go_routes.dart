@@ -3,8 +3,10 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:portfolio/main.dart';
 import 'package:portfolio/src/blocs/navigate/navigate_bloc.dart';
 import 'package:portfolio/src/comman/enum.dart';
+import 'package:portfolio/src/datasource/push_notification.dart';
 import 'package:portfolio/src/presentation/page/Error/error_screen.dart';
 import 'package:portfolio/src/presentation/page/home/home_screen.dart';
 import 'package:portfolio/src/presentation/page/splash/splash_screen.dart';
@@ -113,6 +115,18 @@ GoRouter createRouter() => GoRouter(
             return CertiView(
               url: url ?? '0',
             );
+          },
+        ),
+
+        GoRoute(
+          name: AppRoutes.BLOG_ROUTE_NAME,
+          path: AppRoutes.BLOG_ROUTE_PATH,
+          builder: (BuildContext context, GoRouterState state) {
+            context
+                .read<NavigateBloc>()
+                .add(const NavigateEvent.changeTab(tab: NavTab.Blogs));
+
+            return const HomeScreen();
           },
         ),
       ],

@@ -8,5 +8,6 @@ enum NavTab {
   Experiences,
   Certifications,
   Contact,
+  Blogs,
   Drawer
 }

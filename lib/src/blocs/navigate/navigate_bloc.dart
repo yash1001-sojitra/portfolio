@@ -11,7 +11,10 @@ class NavigateBloc extends Bloc<NavigateEvent, NavigateState> {
     on<NavigateEvent>((event, emit) async {
       await event.map(
         changeTab: (e) async {
-          emit(state.copyWith(currentTab: e.tab));
+          emit(state.copyWith(
+            currentTab: e.tab,
+            isDrawerOpen: false,
+          ));
         },
         toggleDrawer: (e) async {
           emit(state.copyWith(isDrawerOpen: !state.isDrawerOpen));

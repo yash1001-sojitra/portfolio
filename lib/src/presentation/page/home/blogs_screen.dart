@@ -1,15 +1,20 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
-import 'package:portfolio/src/presentation/page/home/widgets/text_data_section.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:portfolio/main.dart';
+import 'package:portfolio/src/blocs/navigate/navigate_bloc.dart';
+import 'package:portfolio/src/datasource/push_notification.dart';
 import 'package:portfolio/src/presentation/widgets/footer_app.dart';
 
-class EductaionScreen extends StatefulWidget {
-  const EductaionScreen({super.key});
+class BlogsScreen extends StatefulWidget {
+  const BlogsScreen({super.key});
 
   @override
-  State<EductaionScreen> createState() => _EductaionScreenState();
+  State<BlogsScreen> createState() => _BlogsScreenState();
 }
 
-class _EductaionScreenState extends State<EductaionScreen>
+class _BlogsScreenState extends State<BlogsScreen>
     with TickerProviderStateMixin {
   // Define animation controllers
   AnimationController? _controller;
@@ -35,13 +40,11 @@ class _EductaionScreenState extends State<EductaionScreen>
     _controller!.repeat(reverse: true);
   }
 
-
   @override
   void dispose() {
     // TODO: implement dispose
     _controller!.dispose();
     super.dispose();
-
   }
 
   @override
@@ -88,7 +91,7 @@ class _EductaionScreenState extends State<EductaionScreen>
                     bottom: 0,
                     child: Center(
                       child: Text(
-                        'Educations',
+                        'Blogs',
                         style: TextStyle(
                           fontSize: 45,
                           fontWeight: FontWeight.w600,
@@ -126,44 +129,6 @@ class _EductaionScreenState extends State<EductaionScreen>
             ],
           ),
           const SizedBox(height: 20),
-          SizedBox(
-            width: MediaQuery.of(context).size.width,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextDataSection(
-                  index: "01",
-                  date: "June 2019 - March 2023",
-                  title: "Bachelor of Computer Science & Engineering",
-                  description: "Government College of Engineering Bhavnagar",
-                  points: const [
-                    "I Completed my Bachelor of Computer Science & Engineering from Government College of Engineering Bhavnagar with a CGPA of 8.0."
-                  ],
-                ),
-                const SizedBox(height: 20),
-                TextDataSection(
-                  index: "02",
-                  date: "June 2017 - March 2019",
-                  title: "HSC - GSHEB",
-                  description: "Aashadeep Science Bhavan, Surat",
-                  points: const [
-                    "I Completed my Higher Secondary School Certificate (HSC - GSHEB) from Aashadeep Science Bhavan, Surat with a PR of 94.02%."
-                  ],
-                ),
-                const SizedBox(height: 20),
-                TextDataSection(
-                  index: "03",
-                  date: "June 2015 - March 2017",
-                  title: "SSC - GSEB",
-                  description: "Baldha D.V.P Madhyamik Shala, Surat",
-                  points: const [
-                    "I Completed my Secondary School Certificate (SSC - GSEB) from Baldha D.V.P Madhyamik Shala, Surat with a PR of 96%."
-                  ],
-                ),
-              ],
-            ),
-          ),
           const SizedBox(height: 50),
         ],
       ),

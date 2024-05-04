@@ -40,6 +40,8 @@ class _MobileDrawerState extends State<MobileDrawer> {
           verticalSize,
           _textHoverWidget(NavTab.Contact, 6),
           verticalSize,
+          _textHoverWidget(NavTab.Blogs, 6),
+          verticalSize,
           verticalSize,
           const DownloadResume(),
           const SizedBox(height: 50)

@@ -27,4 +27,7 @@ class AppRoutes {
 
   static const String PHOTO_VIEW_ROUTE_NAME = 'PhotoView';
   static const String PHOTO_VIEW_ROUTE_PATH = '/photo_view:photoUrl';
+
+  static const String BLOG_ROUTE_NAME = 'Blogs';
+  static const String BLOG_ROUTE_PATH = '/blog';
 }

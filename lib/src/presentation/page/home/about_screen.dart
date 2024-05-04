@@ -37,6 +37,13 @@ class _AboutScreenState extends State<AboutScreen>
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    _controller!.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(

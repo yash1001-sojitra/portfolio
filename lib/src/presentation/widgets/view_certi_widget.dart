@@ -31,6 +31,12 @@ class _ViewCertiState extends State<ViewCerti>
   }
 
   @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
@@ -98,11 +104,5 @@ class _ViewCertiState extends State<ViewCerti>
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
   }
 }

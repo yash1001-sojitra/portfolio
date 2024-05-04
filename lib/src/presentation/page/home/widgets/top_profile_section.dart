@@ -16,6 +16,8 @@ import 'package:portfolio/src/routes/routes.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../../datasource/weather_data.dart';
+
 class TopProfileSection extends StatefulWidget {
   const TopProfileSection({super.key});
 
@@ -35,6 +37,13 @@ class _TopProfileSectionState extends State<TopProfileSection>
       vsync: this,
       duration: const Duration(seconds: 10),
     )..repeat();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _controller!.dispose();
   }
 
   @override

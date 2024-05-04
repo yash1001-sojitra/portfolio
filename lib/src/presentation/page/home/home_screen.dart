@@ -1,10 +1,14 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio/src/blocs/navigate/navigate_bloc.dart';
 import 'package:portfolio/src/comman/enum.dart';
+import 'package:portfolio/src/datasource/weather_data.dart';
 import 'package:portfolio/src/presentation/page/Error/error_screen.dart';
 import 'package:portfolio/src/presentation/page/home/about_screen.dart';
+import 'package:portfolio/src/presentation/page/home/blogs_screen.dart';
 import 'package:portfolio/src/presentation/page/home/certification_screen.dart';
 import 'package:portfolio/src/presentation/page/home/contect_screen.dart';
 import 'package:portfolio/src/presentation/page/home/education_screen.dart';
@@ -26,6 +30,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    final state = context.watch<NavigateBloc>().state;
+    log("HomeScreen: ${state.currentTab.name}");
     return Scaffold(
       body: SafeArea(
         child: Stack(
@@ -33,30 +39,28 @@ class _HomeScreenState extends State<HomeScreen> {
             Stack(
               fit: StackFit.expand,
               children: [
-                BlocBuilder<NavigateBloc, NavigateState>(
-                  builder: (context, state) {
-                    return state.isDrawerOpen &&
-                            !ResponsiveBreakpoints.of(context).isDesktop
-                        ? const MobileDrawer()
-                        : state.currentTab == NavTab.Home
-                            ? const TopProfileSection()
-                            : state.currentTab == NavTab.Contact
-                                ? const ContectScreen()
-                                : state.currentTab == NavTab.About
-                                    ? const AboutScreen()
-                                    : state.currentTab == NavTab.Works
-                                        ? const WorksScreen()
-                                        : state.currentTab == NavTab.Educations
-                                            ? const EductaionScreen()
+                state.isDrawerOpen &&
+                        !ResponsiveBreakpoints.of(context).isDesktop
+                    ? const MobileDrawer()
+                    : state.currentTab == NavTab.Home
+                        ? const TopProfileSection()
+                        : state.currentTab == NavTab.Contact
+                            ? const ContectScreen()
+                            : state.currentTab == NavTab.About
+                                ? const AboutScreen()
+                                : state.currentTab == NavTab.Works
+                                    ? const WorksScreen()
+                                    : state.currentTab == NavTab.Educations
+                                        ? const EductaionScreen()
+                                        : state.currentTab == NavTab.Experiences
+                                            ? const ExperienceScreen()
                                             : state.currentTab ==
-                                                    NavTab.Experiences
-                                                ? const ExperienceScreen()
+                                                    NavTab.Certifications
+                                                ? const CertificationScreen()
                                                 : state.currentTab ==
-                                                        NavTab.Certifications
-                                                    ? const CertificationScreen()
-                                                    : const ErrorScreen();
-                  },
-                ),
+                                                        NavTab.Blogs
+                                                    ? const BlogsScreen()
+                                                    : const ErrorScreen(),
                 const Positioned(
                   top: 0,
                   left: 0,

@@ -38,6 +38,13 @@ class _CertificationScreenState extends State<CertificationScreen>
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    _controller!.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
