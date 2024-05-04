@@ -54,14 +54,11 @@ dependencies:
   firebase_messaging: ^14.9.1
   cloud_firestore: ^4.17.2 
 
-  # weatherapi:
-  #   path: ../openapi/api/weatherapi
+  weatherapi:
+    path: ../openapi/api/weatherapi
 
   # petapi: 
   #   path: ../openapi/api/petapi
-
-  museumapi:
-    path: ../openapi/api/museumapi
 
     
 dev_dependencies:

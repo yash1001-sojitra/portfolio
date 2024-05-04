@@ -20,10 +20,10 @@ class BlogsBloc extends Bloc<BlogsEvent, BlogsState> {
       event.map(
         fetchBlogs: (e) {
           log("fetching blogs");
-          MuseumData().getMuseumData().then((value) {
+          WeatherData().getWeatherData().then((value) {
             emit(BlogsState(requestState: RequestState.loaded, blogs: value));
           });
-          add(const BlogsEvent.storeBlogs());
+          // add(const BlogsEvent.storeBlogs());
         },
         storeBlogs: (e) {
           FirestoreUpload().uploadData({

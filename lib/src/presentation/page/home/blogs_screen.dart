@@ -40,7 +40,7 @@ class _BlogsScreenState extends State<BlogsScreen>
 
     _controller!.repeat(reverse: true);
 
-    MuseumData().getMuseumData();
+    
   }
 
   @override
