@@ -18,10 +18,12 @@ class WeatherData {
     log('lat: $lat');
     log('long: $long');
 
+    final locationdata = await LocationData().getLocation();
+
     final response =
         await weatherapi.getCurrentWeatherDataApi().currentlatlatlonlonGet(
-              lat: lat,
-              lon: long,
+              lat: locationdata.lat ?? 0.0,
+              lon: locationdata.lon ?? 0.0,
               key: apiKey,
             );
 
