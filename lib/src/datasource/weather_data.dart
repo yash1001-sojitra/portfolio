@@ -22,8 +22,8 @@ class WeatherData {
 
     final response =
         await weatherapi.getCurrentWeatherDataApi().currentlatlatlonlonGet(
-              lat: locationdata.lat ?? 0.0,
-              lon: locationdata.lon ?? 0.0,
+              lat: locationdata.lat ?? 35,
+              lon: locationdata.lon ?? 139,
               key: apiKey,
             );
 
@@ -35,7 +35,9 @@ class WeatherData {
 
 class LocationData {
   Future<LocationModel> getLocation() async {
-    final response = await Dio().get('http://ip-api.com/json');
+    final ipget = await Dio().get('https://api.ipify.org/?format=json');
+    final response = await Dio().get(
+        'https://ip-conf-production.up.railway.app/api/get-ip-details/${ipget.data['ip']}');
 
     log(response.data.toString());
 
