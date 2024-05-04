@@ -38,7 +38,6 @@ class _AboutScreenState extends State<AboutScreen>
 
   @override
   void dispose() {
-    // TODO: implement dispose
     _controller!.dispose();
     super.dispose();
   }

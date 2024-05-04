@@ -39,9 +39,8 @@ class _WorksScreenState extends State<WorksScreen>
 
   @override
   void dispose() {
-    // TODO: implement dispose
-    super.dispose();
     _controller!.dispose();
+    super.dispose();
   }
 
   @override

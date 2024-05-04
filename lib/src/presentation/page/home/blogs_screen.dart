@@ -42,7 +42,6 @@ class _BlogsScreenState extends State<BlogsScreen>
 
   @override
   void dispose() {
-    // TODO: implement dispose
     _controller!.dispose();
     super.dispose();
   }

@@ -35,13 +35,10 @@ class _EductaionScreenState extends State<EductaionScreen>
     _controller!.repeat(reverse: true);
   }
 
-
   @override
   void dispose() {
-    // TODO: implement dispose
     _controller!.dispose();
     super.dispose();
-
   }
 
   @override
