@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/src/comman/constant.dart';
 import 'package:portfolio/src/presentation/download/download_pdf.dart';
 
 class DownloadResume extends StatefulWidget {
@@ -37,9 +38,7 @@ class _DownloadResumeState extends State<DownloadResume>
         onTap: () {
           // Add download resume functionality
 
-          downloadFile(
-            "https://drive.google.com/file/d/1ymN5q-RaUSGn2W-FhakGrfVcm8HlJBlY/view?usp=sharing",
-          );
+          downloadFile(ResumeUrl);
         },
         child: Container(
           width: 100,

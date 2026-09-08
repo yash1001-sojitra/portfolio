@@ -16,3 +16,5 @@ const String Linkedinurl = 'https://www.linkedin.com/in/yashkumar-rank/';
 const String mediumurl = 'https://medium.com/@yashsojitra0';
 const String EmailAddress = 'yashsojitra0@gmail.com';
 const String PhoneNumber = '+91 88669 90844';
+const String ResumeUrl =
+    'https://drive.google.com/file/d/1SwngkCdYYs2KOKP-0vil1qLNVqjBjKR3/view?usp=sharing';
