@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class WorkDataSection extends StatefulWidget {
-  String index;
-  String title;
-  String description;
-  String url;
-  String image;
-  WorkDataSection({
-    Key? key,
+  final String index;
+  final String title;
+  final String description;
+  final String url;
+  final String image;
+  const WorkDataSection({
+    super.key,
     required this.index,
     required this.title,
     required this.description,
     required this.url,
     required this.image,
-  }) : super(key: key);
+  });
 
   @override
   State<WorkDataSection> createState() => _WorkDataSectionState();
@@ -44,6 +43,7 @@ class _WorkDataSectionState extends State<WorkDataSection> {
   }
 
   Widget desktopView() {
+    final isOdd = (int.tryParse(widget.index) ?? 1) % 2 != 0;
     return Container(
       color: Colors.grey[100],
       child: Stack(
@@ -54,14 +54,14 @@ class _WorkDataSectionState extends State<WorkDataSection> {
               opacity: isHovered ? 1 : 0,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisAlignment: widget.index == "01" || widget.index == "03"
-                    ? MainAxisAlignment.start
-                    : MainAxisAlignment.end,
+                mainAxisAlignment:
+                    isOdd ? MainAxisAlignment.start : MainAxisAlignment.end,
                 children: [
-                  Image.asset(
-                    widget.image,
-                    height: 200,
-                  ),
+                  if (widget.image.isNotEmpty)
+                    Image.asset(
+                      widget.image,
+                      height: 200,
+                    ),
                 ],
               ),
             ),
@@ -157,13 +157,14 @@ class _WorkDataSectionState extends State<WorkDataSection> {
               crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Opacity(
-                  opacity: 0.5,
-                  child: Image.asset(
-                    widget.image,
-                    height: 200,
+                if (widget.image.isNotEmpty)
+                  Opacity(
+                    opacity: 0.5,
+                    child: Image.asset(
+                      widget.image,
+                      height: 200,
+                    ),
                   ),
-                ),
               ],
             ),
           ),
@@ -382,6 +383,7 @@ class _WorkDataSectionState extends State<WorkDataSection> {
   }
 
   _launchplayUrl() async {
+    if (widget.url.isEmpty) return;
     if (await canLaunchUrl(Uri.parse(widget.url))) {
       await launchUrl(Uri.parse(widget.url));
     } else {

@@ -130,55 +130,67 @@ class _AboutScreenState extends State<AboutScreen>
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                AboutDataSection(
+                const AboutDataSection(
                   index: "01",
                   date: "STORY",
                   title: "A little bit about myself",
                   description:
-                      "Hello there! I'm Yash, a passionate Flutter developer with 1.5 years of experience in crafting engaging mobile applications. Currently, I'm dedicated to my role at Empiric Infotech, where I thrive on turning innovative ideas into user-friendly digital experiences. Previously, I honed my skills at Aim2Excel, where I delved into the intricacies of app development. My journey in Flutter has been an exciting one, and I'm eager to continue pushing boundaries and creating impactful solutions in the ever-evolving tech landscape. Let's connect and explore the endless possibilities together!",
-                  points: const [],
+                      "Senior Software Developer with 4 years of experience building robust mobile, web, and backend applications using Flutter, Dart, Node.js, and Firebase. Proven leader with hands-on experience architecting scalable systems and leading a 15-member engineering team across mobile, web, and backend projects, from technical design through production deployment. Google Cloud Certified (Associate Cloud Engineer & Professional Cloud Architect), with practical experience across Cloud Run, GKE, Cloud Build, and CI/CD automation. Skilled in clean architecture, rigorous code review, and performance optimization in fast-paced product environments.",
+                  points: [],
                 ),
-                SkillDataSection(
+                const SkillDataSection(
                   index: "02",
                   date: "TECHNOLOGY",
                   title: "What i use.",
                   description:
-                      "I use number of tools to aid my creative process when bringing things to life. Listed below are the tools and technologies that I use to create beautiful and functional applications.",
-                  skills: const [
-                    "Anroid",
+                      "I use a wide array of languages, cloud technologies, and modern frameworks to bring production-grade systems to life.",
+                  skills: [
                     "Flutter",
                     "Dart",
-                    "Kotlin",
-                    "Java",
+                    "Android (Kotlin)",
+                    "iOS (Swift)",
+                    "BLoC & Provider",
                   ],
-                  webskills: const [
-                    "HTML",
-                    "CSS",
-                    "JavaScript",
-                    "React",
-                    "Node",
-                    "Express",
-                    "MongoDB",
+                  webskills: [
+                    "Node.js",
+                    "Nuxt.js",
+                    "Vue.js",
+                    "TypeScript / JavaScript",
+                    "REST & GraphQL",
                   ],
-                  tools: const [
-                    "Android Studio",
-                    "VS Code",
-                    "Git",
+                  cloud: [
+                    "Google Cloud Platform",
+                    "Cloud Run & GKE",
+                    "Cloud Build & CI/CD",
+                    "Terraform & Docker",
+                    "Microservices Architecture",
+                  ],
+                  ai: [
+                    "Google ADK & Gemini Flash",
+                    "Model Context Protocol (MCP)",
+                    "LLM APIs & Prompt Engineering",
+                    "Retrieval-Augmented Gen (RAG)",
+                    "Vector Search",
+                  ],
+                  tools: [
+                    "Git & GitHub",
                     "Postman",
-                    "Adobe XD",
-                    "Figma",
+                    "VS Code & Android Studio",
+                    "JIRA & Agile/Scrum",
+                    "Linux & Shell Scripting",
                   ],
-                  database: const [
-                    "Firebase",
-                    "MySQL",
-                    "SQLite",
+                  database: [
+                    "Firebase & Firestore",
+                    "PostgreSQL",
                     "MongoDB",
+                    "Redis",
+                    "MySQL",
                   ],
                 ),
               ],
             ),
           ),
-          SocialDataSection(
+          const SocialDataSection(
             index: "03",
             date: "CONTACT",
             title: "Social.",

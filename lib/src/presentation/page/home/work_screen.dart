@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/src/presentation/page/home/data/work_data.dart';
-import 'package:portfolio/src/presentation/page/home/widgets/text_data_section.dart';
-import 'package:portfolio/src/presentation/page/home/widgets/work_data_section.dart';
 import 'package:portfolio/src/presentation/widgets/footer_app.dart';
 
 class WorksScreen extends StatefulWidget {

@@ -71,6 +71,9 @@ class _MobileDrawerState extends State<MobileDrawer> {
                       .read<NavigateBloc>()
                       .add(const NavigateEvent.toggleDrawer());
                 }
+                context
+                    .read<NavigateBloc>()
+                    .add(NavigateEvent.changeTab(tab: text));
                 context.goNamed(text.name);
               },
               child: Stack(

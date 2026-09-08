@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:portfolio/src/presentation/download/download_pdf.dart';
 import 'package:portfolio/src/routes/routes.dart';
 
 class ViewCerti extends StatefulWidget {
-  String url;
-  ViewCerti({
-    Key? key,
+  final String url;
+  const ViewCerti({
+    super.key,
     required this.url,
-  }) : super(key: key);
+  });
 
   @override
   State<ViewCerti> createState() => _ViewCertiState();

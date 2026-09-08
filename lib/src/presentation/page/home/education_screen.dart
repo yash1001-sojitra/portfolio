@@ -129,33 +129,43 @@ class _EductaionScreenState extends State<EductaionScreen>
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                TextDataSection(
+                const TextDataSection(
                   index: "01",
-                  date: "June 2019 - March 2023",
-                  title: "Bachelor of Computer Science & Engineering",
-                  description: "Government College of Engineering Bhavnagar",
-                  points: const [
-                    "I Completed my Bachelor of Computer Science & Engineering from Government College of Engineering Bhavnagar with a CGPA of 8.0."
+                  date: "2023 - 2025",
+                  title: "Master of Technology — Computer Science & Engineering",
+                  description: "Parul University",
+                  points: [
+                    "Pursuing Master of Technology in Computer Science & Engineering, specializing in advanced software architecture, distributed cloud systems, and intelligent systems.",
                   ],
                 ),
                 const SizedBox(height: 20),
-                TextDataSection(
+                const TextDataSection(
                   index: "02",
-                  date: "June 2017 - March 2019",
-                  title: "HSC - GSHEB",
-                  description: "Aashadeep Science Bhavan, Surat",
-                  points: const [
-                    "I Completed my Higher Secondary School Certificate (HSC - GSHEB) from Aashadeep Science Bhavan, Surat with a PR of 94.02%."
+                  date: "June 2019 - March 2023",
+                  title: "Bachelor of Engineering — Computer Science & Engineering",
+                  description: "Government College of Engineering Bhavnagar",
+                  points: [
+                    "Completed Bachelor of Computer Science & Engineering from Government College of Engineering Bhavnagar with a CGPA of 8.0.",
                   ],
                 ),
                 const SizedBox(height: 20),
-                TextDataSection(
+                const TextDataSection(
                   index: "03",
+                  date: "June 2017 - March 2019",
+                  title: "HSC - Science (GSHEB)",
+                  description: "Aashadeep Science Bhavan, Surat",
+                  points: [
+                    "Completed Higher Secondary School Certificate (HSC - GSHEB) with 94.02 PR.",
+                  ],
+                ),
+                const SizedBox(height: 20),
+                const TextDataSection(
+                  index: "04",
                   date: "June 2015 - March 2017",
-                  title: "SSC - GSEB",
+                  title: "SSC (GSEB)",
                   description: "Baldha D.V.P Madhyamik Shala, Surat",
-                  points: const [
-                    "I Completed my Secondary School Certificate (SSC - GSEB) from Baldha D.V.P Madhyamik Shala, Surat with a PR of 96%."
+                  points: [
+                    "Completed Secondary School Certificate (SSC - GSEB) with 96 PR.",
                   ],
                 ),
               ],

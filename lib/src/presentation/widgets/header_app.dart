@@ -42,6 +42,9 @@ class _AppHeaderState extends State<AppHeader> {
           cursor: SystemMouseCursors.click,
           child: GestureDetector(
               onTap: () {
+                context
+                    .read<NavigateBloc>()
+                    .add(const NavigateEvent.changeTab(tab: NavTab.Home));
                 context.goNamed(NavTab.Home.name);
               },
               child: Text('YR', style: logoStyle)),
@@ -82,6 +85,9 @@ class _AppHeaderState extends State<AppHeader> {
         });
       },
       child: GestureDetector(onTap: () {
+        context
+            .read<NavigateBloc>()
+            .add(NavigateEvent.changeTab(tab: text));
         context.goNamed(text.name);
       }, child: BlocBuilder<NavigateBloc, NavigateState>(
         builder: (context, state) {

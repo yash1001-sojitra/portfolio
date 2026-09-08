@@ -12,5 +12,7 @@ const double SPACE15 = 15;
 const double SPACE25 = 25;
 
 const String Githuburl = 'https://github.com/yash1001-sojitra';
-const String Linkedinurl = 'https://www.linkedin.com/in/yashkumar-rank';
+const String Linkedinurl = 'https://www.linkedin.com/in/yashkumar-rank/';
 const String mediumurl = 'https://medium.com/@yashsojitra0';
+const String EmailAddress = 'yashsojitra0@gmail.com';
+const String PhoneNumber = '+91 88669 90844';

@@ -1,18 +1,15 @@
 import 'dart:math';
 
-import 'package:flutter/animation.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:portfolio/src/blocs/navigate/navigate_bloc.dart';
 import 'package:portfolio/src/comman/constant.dart';
 import 'package:portfolio/src/comman/enum.dart';
 import 'package:portfolio/src/comman/text_style.dart';
 import 'package:portfolio/src/presentation/page/home/data/work_data.dart';
-import 'package:portfolio/src/presentation/page/home/widgets/work_data_section.dart';
 import 'package:portfolio/src/presentation/widgets/footer_app.dart';
 import 'package:iconsx_plus/iconsx_plus.dart';
-import 'package:portfolio/src/routes/routes.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -149,16 +146,16 @@ class _TopProfileSectionState extends State<TopProfileSection>
                             style: profiletextStyle,
                           ),
                           Text(
-                            "I'm Yash Rank",
+                            "I'm Yashkumar Rank",
                             style: profiletextStyle,
                           ),
                           Text(
-                            'Software Engineer',
+                            'Senior Software Developer',
                             style: profiletextStyle,
                           ),
                           const SizedBox(height: 50),
                           const Text(
-                            "Mobile App Developer / Web Developer / Flutter Developer",
+                            "Senior Software Developer — Full-Stack, Mobile & Cloud Systems",
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 16,
@@ -179,6 +176,10 @@ class _TopProfileSectionState extends State<TopProfileSection>
                             },
                             child: GestureDetector(
                               onTap: () {
+                                context
+                                    .read<NavigateBloc>()
+                                    .add(const NavigateEvent.changeTab(
+                                        tab: NavTab.Works));
                                 context.goNamed(NavTab.Works.name);
                               },
                               child: Stack(
@@ -287,16 +288,16 @@ class _TopProfileSectionState extends State<TopProfileSection>
                       style: profiletextStyle,
                     ),
                     Text(
-                      "I'm Yash Rank",
+                      "I'm Yashkumar Rank",
                       style: profiletextStyle,
                     ),
                     Text(
-                      'Software Engineer',
+                      'Senior Software Developer',
                       style: profiletextStyle,
                     ),
                     const SizedBox(height: 50),
                     const Text(
-                      "Mobile App Developer / Web Developer / Flutter Developer",
+                      "Senior Software Developer — Full-Stack, Mobile & Cloud Systems",
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 16,

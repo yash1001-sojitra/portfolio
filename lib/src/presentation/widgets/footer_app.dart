@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:iconsx_plus/iconsx_plus.dart';
+import 'package:portfolio/src/blocs/navigate/navigate_bloc.dart';
 import 'package:portfolio/src/comman/constant.dart';
 import 'package:portfolio/src/comman/enum.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -93,6 +93,10 @@ class _FooterAppState extends State<FooterApp> {
                 },
                 child: GestureDetector(
                   onTap: () {
+                    context
+                        .read<NavigateBloc>()
+                        .add(const NavigateEvent.changeTab(
+                            tab: NavTab.Contact));
                     context.goNamed(NavTab.Contact.name);
                   },
                   child: Stack(
@@ -157,7 +161,7 @@ class _FooterAppState extends State<FooterApp> {
             height: 50,
           ),
           const Text(
-            "© 2024 built by Yash Rank",
+            "© 2024 built by Yashkumar Rank",
             style: TextStyle(color: Colors.white),
           ),
           Row(

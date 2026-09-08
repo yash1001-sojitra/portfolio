@@ -129,35 +129,31 @@ class _ExperienceScreenState extends State<ExperienceScreen>
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                TextDataSection(
+                const TextDataSection(
                   index: "01",
-                  date: "Feb 2023 - March 2024",
-                  title: "Aim2Excel - Delhi",
-                  description: "As Software Engineer",
-                  points: const [
-                    // 25 + app working
-
-                    "I am currently working as a Software Engineer at Aim2Excel. I am responsible for developing and maintaining mobile and web applications. I am also responsible for the deployment of the applications.",
-                    "Working on the development of the mobile application Web application using Flutter.",
-
-                    // working in more than 25+ apps
-                    "I have worked on more than 25+ applications. Some of the applications are:",
-                    "1. Max Cricket Live Line - 1M+ Downloads",
-                    "2. Mesmerizing Food - 5K+ Downloads",
-                    "3. AP'Varnam - 1K+ Downloads",
-                    "4. Jeeto Cric Live Line - 5K+ Downloads Etc.",
+                  date: "March 2024 - Present",
+                  title: "Aviato Consulting",
+                  description:
+                      "Senior Software Developer | Team Lead (15-member team)",
+                  points: [
+                    "Led a 15-member engineering team delivering mobile, web, and backend projects from architecture through deployment.",
+                    "Architected and delivered Flutter apps and Nuxt.js web portals integrated with Firebase, Node.js, and Google Cloud Platform.",
+                    "Designed cloud-native architectures on GCP using Cloud Run, GKE, and automated Cloud Build CI/CD pipelines.",
+                    "Standardized development workflows across the team through clean architecture patterns, rigorous code review, and automated testing.",
+                    "Mentored 15 engineers across Flutter, backend, and cloud domains, driving measurable improvements in sprint velocity and delivery.",
                   ],
                 ),
                 const SizedBox(height: 20),
-                TextDataSection(
+                const TextDataSection(
                   index: "02",
-                  date: "March 2024 - Present",
-                  title: "Empiric Infotech - Surat",
-                  description: "As Software Engineer",
-                  points: const [
-                    "I am Currently working as a Software Engineer at Empiric InfoTech.",
-                    "I have worked on below project:",
-                    "1. Resume Builder Using AI - 10K+ Downloads",
+                  date: "Feb 2023 - March 2024",
+                  title: "Aim2Excel",
+                  description: "Full Stack Mobile Developer",
+                  points: [
+                    "Delivered 25+ mobile apps across App Store and Google Play using Flutter, Dart, Firebase, and RESTful APIs, with flagship apps exceeding 1M+ downloads.",
+                    "Designed scalable state management using BLoC and Provider patterns, reducing codebase complexity and boosting screen load speeds.",
+                    "Implemented CI/CD pipelines automating build, test, and deployment workflows to Google Play Console and Apple App Store Connect.",
+                    "Integrated third-party SDKs, payment gateways, offline caching, and deep linking across production applications.",
                   ],
                 ),
               ],

@@ -134,11 +134,31 @@ class _CertificationScreenState extends State<CertificationScreen>
     );
   }
 
+  static const List<String> certificateImages = [
+    "assets/certi/google_cloud_associate.png",
+    "assets/certi/google_architech_udemy.jpg",
+    "assets/certi/certi-1.png",
+    "assets/certi/certi0.png",
+    "assets/certi/certi1.png",
+    "assets/certi/certi2.png",
+    "assets/certi/certi3.png",
+    "assets/certi/certi4.png",
+    "assets/certi/certi5.png",
+    "assets/certi/certi6.png",
+    "assets/certi/certi7.png",
+    "assets/certi/certi8.png",
+    "assets/certi/certi9.png",
+    "assets/certi/certi10.png",
+    "assets/certi/certi11.png",
+    "assets/certi/certi12.png",
+    "assets/certi/certi13.png",
+  ];
+
   Widget gridViewImage() {
     return ListView.builder(
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
-      itemCount: (15 / 2).ceil(), // Ensure to ceil the division result
+      itemCount: (certificateImages.length / 2).ceil(),
       itemBuilder: (context, index) {
         final firstItem = index * 2;
         final secondItem = firstItem + 1;
@@ -148,15 +168,15 @@ class _CertificationScreenState extends State<CertificationScreen>
               child: SizedBox(
                 width: MediaQuery.of(context).size.width / 2,
                 child: ImageHover(
-                  index: firstItem,
+                  imagePath: certificateImages[firstItem],
                 ),
               ),
             ),
             Expanded(
               child: SizedBox(
                 width: MediaQuery.of(context).size.width / 2,
-                child: secondItem < 15
-                    ? ImageHover(index: secondItem)
+                child: secondItem < certificateImages.length
+                    ? ImageHover(imagePath: certificateImages[secondItem])
                     : const SizedBox(),
               ),
             ),
@@ -170,10 +190,10 @@ class _CertificationScreenState extends State<CertificationScreen>
     return ListView.builder(
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
-      itemCount: 15,
+      itemCount: certificateImages.length,
       itemBuilder: (context, index) {
         return ImageHover(
-          index: index,
+          imagePath: certificateImages[index],
         );
       },
     );
@@ -181,11 +201,11 @@ class _CertificationScreenState extends State<CertificationScreen>
 }
 
 class ImageHover extends StatefulWidget {
-  int index;
-  ImageHover({
-    Key? key,
-    required this.index,
-  }) : super(key: key);
+  final String imagePath;
+  const ImageHover({
+    super.key,
+    required this.imagePath,
+  });
 
   @override
   State<ImageHover> createState() => _ImageHoverState();
@@ -212,7 +232,7 @@ class _ImageHoverState extends State<ImageHover> {
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: Image.asset(
-              "assets/certi/certi${widget.index - 1}.png",
+              widget.imagePath,
               fit: BoxFit.contain,
             ),
           ),
@@ -221,16 +241,14 @@ class _ImageHoverState extends State<ImageHover> {
             left: 0,
             right: 0,
             bottom: 50,
-            child: Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  ViewCerti(
-                    url: "${widget.index - 1}",
-                  ),
-                  const SizedBox(height: 10),
-                ],
-              ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                ViewCerti(
+                  url: widget.imagePath.split('/').last,
+                ),
+                const SizedBox(height: 10),
+              ],
             ),
           ),
         ],

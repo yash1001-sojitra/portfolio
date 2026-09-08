@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 class TextDataSection extends StatefulWidget {
-  String index;
-  String date;
-  String title;
-  String description;
-  List<String> points;
-  TextDataSection({
-    Key? key,
+  final String index;
+  final String date;
+  final String title;
+  final String description;
+  final List<String> points;
+  const TextDataSection({
+    super.key,
     required this.index,
     required this.date,
     required this.title,
     required this.description,
     required this.points,
-  }) : super(key: key);
+  });
 
   @override
   State<TextDataSection> createState() => _TextDataSectionState();

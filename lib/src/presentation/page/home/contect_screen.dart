@@ -1,8 +1,5 @@
-// ignore_for_file: deprecated_member_use
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:portfolio/src/comman/constant.dart';
 import 'package:portfolio/src/presentation/widgets/footer_app.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -57,11 +54,48 @@ class _ContectScreenState extends State<ContectScreen> {
             ),
             const SizedBox(height: 20),
             const Text(
-              'Hey There, Got a project, job offer or consultancing work for me? Feel free to contact me.',
+              'Hey There, Got a project, job offer or consultancy work for me? Feel free to contact me.',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w400,
               ),
+            ),
+            const SizedBox(height: 15),
+            const Wrap(
+              spacing: 20,
+              runSpacing: 10,
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(Icons.email_outlined, size: 18, color: Colors.black87),
+                    SizedBox(width: 8),
+                    Text(
+                      EmailAddress,
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black87,
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(Icons.phone_outlined, size: 18, color: Colors.black87),
+                    SizedBox(width: 8),
+                    Text(
+                      PhoneNumber,
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black87,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
             const SizedBox(height: 20),
             Container(
@@ -205,17 +239,23 @@ class _ContectScreenState extends State<ContectScreen> {
   // open email client
   void _sendEmail() async {
     try {
+      final String body =
+          'Name: ${_nameController.text}\nEmail: ${_emailController.text}\n\n${_messageController.text}';
       final Uri emailLaunchUri = Uri(
         scheme: 'mailto',
-        path: _emailController.text,
+        path: EmailAddress,
         queryParameters: {
-          'subject': _subjectController.text,
-          'body': _messageController.text,
+          'subject': _subjectController.text.isNotEmpty
+              ? _subjectController.text
+              : 'Contact from Portfolio',
+          'body': body,
         },
       );
-      launch(emailLaunchUri.toString());
+      if (await canLaunchUrl(emailLaunchUri)) {
+        await launchUrl(emailLaunchUri);
+      }
     } catch (e) {
-      print(e);
+      debugPrint(e.toString());
     }
   }
 }

@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio/src/blocs/navigate/navigate_bloc.dart';
-import 'package:portfolio/src/comman/enum.dart';
-import 'package:portfolio/src/presentation/page/home/contect_screen.dart';
-import 'package:portfolio/src/presentation/page/home/widgets/top_profile_section.dart';
 import 'package:portfolio/src/presentation/widgets/footer_app.dart';
 import 'package:portfolio/src/presentation/widgets/header_app.dart';
 

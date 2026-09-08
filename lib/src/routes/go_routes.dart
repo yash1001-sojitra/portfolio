@@ -21,8 +21,15 @@ GoRouter createRouter() => GoRouter(
         GoRoute(
           name: AppRoutes.SPLASH_ROUTE_NAME,
           path: AppRoutes.SPLASH_ROUTE_PATH,
-          builder: (BuildContext context, GoRouterState state) {
-            return const SplashScreen();
+          pageBuilder: (BuildContext context, GoRouterState state) {
+            return CustomTransitionPage(
+              key: state.pageKey,
+              child: const SplashScreen(),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                return FadeTransition(opacity: animation, child: child);
+              },
+            );
           },
         ),
 
@@ -32,86 +39,120 @@ GoRouter createRouter() => GoRouter(
         GoRoute(
           name: AppRoutes.HOME_ROUTE_NAME,
           path: AppRoutes.HOME_ROUTE_PATH,
-          builder: (BuildContext context, GoRouterState state) {
+          pageBuilder: (BuildContext context, GoRouterState state) {
             context
                 .read<NavigateBloc>()
                 .add(const NavigateEvent.changeTab(tab: NavTab.Home));
-            return const HomeScreen();
+            return const NoTransitionPage(
+              key: ValueKey('HomeScreen'),
+              child: HomeScreen(),
+            );
           },
         ),
 
         GoRoute(
           name: AppRoutes.ABOUT_ROUTE_NAME,
           path: AppRoutes.ABOUT_ROUTE_PATH,
-          builder: (BuildContext context, GoRouterState state) {
+          pageBuilder: (BuildContext context, GoRouterState state) {
             context
                 .read<NavigateBloc>()
                 .add(const NavigateEvent.changeTab(tab: NavTab.About));
-            return const HomeScreen();
+            return const NoTransitionPage(
+              key: ValueKey('HomeScreen'),
+              child: HomeScreen(),
+            );
           },
         ),
 
         GoRoute(
           name: AppRoutes.WORKS_ROUTE_NAME,
           path: AppRoutes.WORKS_ROUTE_PATH,
-          builder: (BuildContext context, GoRouterState state) {
+          pageBuilder: (BuildContext context, GoRouterState state) {
             context
                 .read<NavigateBloc>()
                 .add(const NavigateEvent.changeTab(tab: NavTab.Works));
-            return const HomeScreen();
+            return const NoTransitionPage(
+              key: ValueKey('HomeScreen'),
+              child: HomeScreen(),
+            );
           },
         ),
 
         GoRoute(
           name: AppRoutes.EDUCATION_ROUTE_NAME,
           path: AppRoutes.EDUCATION_ROUTE_PATH,
-          builder: (BuildContext context, GoRouterState state) {
+          pageBuilder: (BuildContext context, GoRouterState state) {
             context
                 .read<NavigateBloc>()
                 .add(const NavigateEvent.changeTab(tab: NavTab.Educations));
-            return const HomeScreen();
+            return const NoTransitionPage(
+              key: ValueKey('HomeScreen'),
+              child: HomeScreen(),
+            );
           },
         ),
 
         GoRoute(
           name: AppRoutes.EXPERIENCE_ROUTE_NAME,
           path: AppRoutes.EXPERIENCE_ROUTE_PATH,
-          builder: (BuildContext context, GoRouterState state) {
+          pageBuilder: (BuildContext context, GoRouterState state) {
             context
                 .read<NavigateBloc>()
                 .add(const NavigateEvent.changeTab(tab: NavTab.Experiences));
-            return const HomeScreen();
+            return const NoTransitionPage(
+              key: ValueKey('HomeScreen'),
+              child: HomeScreen(),
+            );
           },
         ),
 
         GoRoute(
           name: AppRoutes.CERTIFICATION_ROUTE_NAME,
           path: AppRoutes.CERTIFICATION_ROUTE_PATH,
-          builder: (BuildContext context, GoRouterState state) {
+          pageBuilder: (BuildContext context, GoRouterState state) {
             context
                 .read<NavigateBloc>()
                 .add(const NavigateEvent.changeTab(tab: NavTab.Certifications));
-            return const HomeScreen();
+            return const NoTransitionPage(
+              key: ValueKey('HomeScreen'),
+              child: HomeScreen(),
+            );
           },
         ),
         GoRoute(
           name: AppRoutes.CONTACT_ROUTE_NAME,
           path: AppRoutes.CONTACT_ROUTE_PATH,
-          builder: (BuildContext context, GoRouterState state) {
+          pageBuilder: (BuildContext context, GoRouterState state) {
             context
                 .read<NavigateBloc>()
                 .add(const NavigateEvent.changeTab(tab: NavTab.Contact));
-            return const HomeScreen();
+            return const NoTransitionPage(
+              key: ValueKey('HomeScreen'),
+              child: HomeScreen(),
+            );
           },
         ),
 
         GoRoute(
           name: AppRoutes.PHOTO_VIEW_ROUTE_NAME,
           path: AppRoutes.PHOTO_VIEW_ROUTE_PATH,
-          builder: (BuildContext context, GoRouterState state) {
+          pageBuilder: (BuildContext context, GoRouterState state) {
             final String? url = state.pathParameters['photoUrl'];
-            return CertiView(
-              url: url ?? '0',
+            return CustomTransitionPage(
+              key: state.pageKey,
+              child: CertiView(
+                url: url ?? '0',
+              ),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                return FadeTransition(
+                  opacity: CurvedAnimation(
+                    parent: animation,
+                    curve: Curves.easeInOut,
+                  ),
+                  child: child,
+                );
+              },
             );
           },
         ),
@@ -119,14 +160,15 @@ GoRouter createRouter() => GoRouter(
         GoRoute(
           name: AppRoutes.BLOG_ROUTE_NAME,
           path: AppRoutes.BLOG_ROUTE_PATH,
-          builder: (BuildContext context, GoRouterState state) {
+          pageBuilder: (BuildContext context, GoRouterState state) {
             context
                 .read<NavigateBloc>()
                 .add(const NavigateEvent.changeTab(tab: NavTab.Blogs));
 
-       
-
-            return const HomeScreen();
+            return const NoTransitionPage(
+              key: ValueKey('HomeScreen'),
+              child: HomeScreen(),
+            );
           },
         ),
       ],
