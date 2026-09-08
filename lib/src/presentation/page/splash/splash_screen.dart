@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:portfolio/src/blocs/weather/weather_bloc.dart';
 import 'package:portfolio/src/routes/routes.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -14,8 +12,6 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    context.read<WeatherBloc>().add(const WeatherEvent.getlocation());
-
     super.initState();
     Future.delayed(const Duration(seconds: 2), () {
       context.goNamed(AppRoutes.HOME_ROUTE_NAME);

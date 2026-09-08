@@ -11,12 +11,10 @@ import 'package:portfolio/src/comman/text_style.dart';
 import 'package:portfolio/src/presentation/page/home/data/work_data.dart';
 import 'package:portfolio/src/presentation/page/home/widgets/work_data_section.dart';
 import 'package:portfolio/src/presentation/widgets/footer_app.dart';
-import 'package:icons_plus/icons_plus.dart';
+import 'package:iconsx_plus/iconsx_plus.dart';
 import 'package:portfolio/src/routes/routes.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import '../../../../datasource/weather_data.dart';
 
 class TopProfileSection extends StatefulWidget {
   const TopProfileSection({super.key});

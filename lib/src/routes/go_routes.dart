@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:portfolio/src/blocs/navigate/navigate_bloc.dart';
-import 'package:portfolio/src/blocs/weather/weather_bloc.dart';
 import 'package:portfolio/src/comman/enum.dart';
 import 'package:portfolio/src/presentation/page/Error/error_screen.dart';
 import 'package:portfolio/src/presentation/page/home/home_screen.dart';
@@ -130,19 +129,6 @@ GoRouter createRouter() => GoRouter(
             return const HomeScreen();
           },
         ),
-
-        GoRoute(
-          name: AppRoutes.WEATHER_ROUTE_NAME,
-          path: AppRoutes.WEATHER_ROUTE_PATH,
-          builder: (BuildContext context, GoRouterState state) {
-            context
-                .read<NavigateBloc>()
-                .add(const NavigateEvent.changeTab(tab: NavTab.Weather));
-                     context.read<WeatherBloc>().add(const WeatherEvent.fetchWeather());
-            return const HomeScreen();
-          },
-        ),
-
       ],
       errorPageBuilder: (context, state) {
         return const MaterialPage(child: ErrorScreen());

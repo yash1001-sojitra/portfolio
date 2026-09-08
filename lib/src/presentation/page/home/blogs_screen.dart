@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio/main.dart';
 import 'package:portfolio/src/blocs/navigate/navigate_bloc.dart';
-import 'package:portfolio/src/datasource/push_notification.dart';
-import 'package:portfolio/src/datasource/weather_data.dart';
 import 'package:portfolio/src/presentation/widgets/footer_app.dart';
 
 class BlogsScreen extends StatefulWidget {

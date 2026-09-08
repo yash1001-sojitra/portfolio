@@ -5,7 +5,6 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio/src/blocs/navigate/navigate_bloc.dart';
 import 'package:portfolio/src/comman/enum.dart';
-import 'package:portfolio/src/datasource/weather_data.dart';
 import 'package:portfolio/src/presentation/page/Error/error_screen.dart';
 import 'package:portfolio/src/presentation/page/home/about_screen.dart';
 import 'package:portfolio/src/presentation/page/home/blogs_screen.dart';
@@ -13,7 +12,6 @@ import 'package:portfolio/src/presentation/page/home/certification_screen.dart';
 import 'package:portfolio/src/presentation/page/home/contect_screen.dart';
 import 'package:portfolio/src/presentation/page/home/education_screen.dart';
 import 'package:portfolio/src/presentation/page/home/experience_screen.dart';
-import 'package:portfolio/src/presentation/page/home/weather_screen.dart';
 import 'package:portfolio/src/presentation/page/home/widgets/top_profile_section.dart';
 import 'package:portfolio/src/presentation/page/home/work_screen.dart';
 import 'package:portfolio/src/presentation/widgets/footer_app.dart';
@@ -61,12 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 : state.currentTab ==
                                                         NavTab.Blogs
                                                     ? const BlogsScreen()
-                                                    :  state.currentTab ==
-                                                        NavTab.Weather ?
-                                                        const WeatherScreen()
-                                                        :
-                                                    
-                                                    const ErrorScreen(),
+                                                    : const ErrorScreen(),
                 const Positioned(
                   top: 0,
                   left: 0,

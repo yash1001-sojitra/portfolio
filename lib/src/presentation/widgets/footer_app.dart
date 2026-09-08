@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
-import 'package:icons_plus/icons_plus.dart';
+import 'package:iconsx_plus/iconsx_plus.dart';
 import 'package:portfolio/src/comman/constant.dart';
 import 'package:portfolio/src/comman/enum.dart';
 import 'package:responsive_framework/responsive_framework.dart';

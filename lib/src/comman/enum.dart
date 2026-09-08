@@ -9,6 +9,5 @@ enum NavTab {
   Certifications,
   Contact,
   Blogs,
-  Drawer , 
-  Weather
+  Drawer,
 }

@@ -9,7 +9,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:portfolio/src/blocs/navigate/navigate_bloc.dart';
-import 'package:portfolio/src/blocs/weather/weather_bloc.dart';
 import 'package:portfolio/src/routes/go_routes.dart';
 import 'package:portfolio/injection.dart' as di;
 import 'package:responsive_framework/responsive_framework.dart';
@@ -54,9 +53,6 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     _router = createRouter();
-    messageListener();
-
-    // WeatherData().getWeatherData();
   }
 
   @override
@@ -64,7 +60,6 @@ class _MyAppState extends State<MyApp> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => di.locator<NavigateBloc>()),
-        BlocProvider(create: (_) => di.locator<WeatherBloc>()),
       ],
       child: MaterialApp.router(
         title: 'Yash Rank Portfolio',
@@ -82,40 +77,5 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
     );
-  }
-
-  void messageListener() async {
-    await FirebaseMessaging.instance.requestPermission().then((value) async {
-      if (value.authorizationStatus == AuthorizationStatus.authorized) {
-        log('requestPermission');
-        await FirebaseMessaging.instance
-            .setForegroundNotificationPresentationOptions(
-          alert: true,
-          badge: true,
-          sound: true,
-        )
-            .then((value) async {
-          log('setForegroundNotificationPresentationOptions');
-          await FirebaseMessaging.instance.getToken().then((value) {
-            log("token : $value");
-
-            token = value ?? "";
-          }).catchError((e) {
-            log("token error : $e");
-          });
-        });
-
-        log('messageListener');
-
-        FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-          log('onMessage');
-          if (message.notification != null) {
-            Fluttertoast.showToast(msg: message.notification!.title!);
-          }
-        });
-      } else {
-        log('requestPermission denied');
-      }
-    });
   }
 }
