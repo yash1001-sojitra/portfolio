@@ -1,12 +1,8 @@
 // ignore_for_file: library_private_types_in_public_api
 
-import 'dart:developer';
-
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:portfolio/src/blocs/navigate/navigate_bloc.dart';
 import 'package:portfolio/src/routes/go_routes.dart';
@@ -15,7 +11,6 @@ import 'package:responsive_framework/responsive_framework.dart';
 import 'package:url_strategy/url_strategy.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-String? token;
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: "dotenv");
