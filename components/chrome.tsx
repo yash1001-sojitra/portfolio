@@ -103,6 +103,13 @@ export function Nav() {
           <span className="hidden font-mono text-xs text-muted tabular-nums md:inline">
             IST {time}
           </span>
+          <a
+            href="/world"
+            className="flex items-center gap-2 border border-signal bg-signal-dim px-3 py-1.5 font-mono text-xs text-signal transition-colors hover:bg-signal hover:text-bg"
+          >
+            <span className="size-1.5 bg-current" />
+            3D World
+          </a>
           <button
             onClick={openPalette}
             className="flex items-center gap-2 border border-line-strong px-3 py-1.5 font-mono text-xs text-muted transition-colors hover:border-signal hover:text-ink"
@@ -290,6 +297,7 @@ export function CommandPalette() {
     return [
       ...SECTIONS.map((s) => ({ group: "Navigate", label: s.label, hint: `#${s.id}`, run: go(s.id) })),
       { group: "Navigate", label: "Back to top", hint: "#top", run: go("top") },
+      { group: "Navigate", label: "Explore the 3D world", hint: "/world", run: () => (location.href = "/world") },
       { group: "Actions", label: "Copy email address", hint: profile.email, run: copyEmail },
       { group: "Actions", label: "Open resume", hint: "Google Drive", run: open(profile.resume) },
       { group: "Actions", label: "Send an email", hint: "mailto", run: () => (location.href = `mailto:${profile.email}`) },

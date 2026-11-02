@@ -29,7 +29,7 @@ export const stats = [
   { value: 4, suffix: "+", label: "Years shipping" },
   { value: 25, suffix: "+", label: "Apps released" },
   { value: 1, suffix: "M+", label: "Downloads" },
-  { value: 15, suffix: "", label: "Engineers led" },
+  { value: 15, suffix: "", label: "Engineers lead" },
 ];
 
 export const skillGroups = [
