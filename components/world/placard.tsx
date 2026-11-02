@@ -5,6 +5,7 @@ import { useFrame, type ThreeEvent } from "@react-three/fiber";
 import { CuboidCollider } from "@react-three/rapier";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { CanvasTexture, SRGBColorSpace, type Group } from "three";
+import { PX, type Draw } from "./charts";
 import type { Link, Place } from "./places";
 import { openLink, player } from "./store";
 
@@ -19,8 +20,6 @@ export const PAPER = {
   post: "#2b2824",
 };
 
-/** Canvas pixels per metre of sign. */
-const PX = 240;
 
 type Chip = { link: Link; x: number; y: number; w: number; h: number };
 
@@ -271,4 +270,96 @@ export function signFor(p: Place): {
     default:
       return null;
   }
+}
+
+/* ───────────────────────── chart boards ───────────────────────── */
+
+/** A standing board that shows one chart from ./charts. `scale` shrinks big charts physically. */
+export function ChartBoard({
+  chart,
+  position,
+  rotationY = 0,
+  scale = 1,
+}: {
+  chart: Draw;
+  position: [number, number, number];
+  rotationY?: number;
+  scale?: number;
+}) {
+  const [fontsOk, setFontsOk] = useState(() => document.fonts?.status === "loaded");
+  useEffect(() => {
+    if (fontsOk) return;
+    let live = true;
+    document.fonts?.ready.then(() => live && setFontsOk(true));
+    return () => {
+      live = false;
+    };
+  }, [fontsOk]);
+  const tex = useMemo(() => {
+    const c = document.createElement("canvas");
+    // draw at 1.5× for crisp text up close
+    const k = 1.5;
+    c.width = Math.round(chart.width * PX * k);
+    c.height = Math.round(chart.height * PX * k);
+    const g = c.getContext("2d")!;
+    g.scale(k, k);
+    g.fillStyle = PAPER.board;
+    g.fillRect(0, 0, c.width, c.height);
+    chart.draw(g, fontFamily());
+    const t = new CanvasTexture(c);
+    t.colorSpace = SRGBColorSpace;
+    t.anisotropy = 8;
+    return t;
+  }, [chart, fontsOk]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => () => tex.dispose(), [tex]);
+
+  const w = chart.width * scale;
+  const h = chart.height * scale;
+  const legs = 0.8;
+  return (
+    <group position={position} rotation-y={rotationY}>
+      <CuboidCollider args={[w / 2, (legs + h) / 2, 0.15]} position-y={(legs + h) / 2} />
+      {[-1, 1].map((sd) => (
+        <mesh key={sd} position={[sd * (w / 2 - 0.15), (legs + h) / 2, -0.05]} castShadow>
+          <boxGeometry args={[0.09, legs + h, 0.09]} />
+          <meshStandardMaterial color={PAPER.post} metalness={0.4} roughness={0.5} />
+        </mesh>
+      ))}
+      <group position-y={legs + h / 2}>
+        <RoundedBox args={[w + 0.08, h + 0.08, 0.06]} radius={0.03} smoothness={2} castShadow>
+          <meshStandardMaterial color={PAPER.edge} roughness={0.9} />
+        </RoundedBox>
+        <mesh position-z={0.032}>
+          <planeGeometry args={[w, h]} />
+          <meshStandardMaterial map={tex} roughness={0.85} />
+        </mesh>
+      </group>
+    </group>
+  );
+}
+
+/** A flat plaque (no posts) for mounting a small chart, like a stat tile, on a surface. */
+export function ChartPlaque({ chart, scale = 1 }: { chart: Draw; scale?: number }) {
+  const tex = useMemo(() => {
+    const c = document.createElement("canvas");
+    const k = 1.5;
+    c.width = Math.round(chart.width * PX * k);
+    c.height = Math.round(chart.height * PX * k);
+    const g = c.getContext("2d")!;
+    g.scale(k, k);
+    g.fillStyle = PAPER.board;
+    g.fillRect(0, 0, c.width, c.height);
+    chart.draw(g, fontFamily());
+    const t = new CanvasTexture(c);
+    t.colorSpace = SRGBColorSpace;
+    t.anisotropy = 8;
+    return t;
+  }, [chart]);
+  useEffect(() => () => tex.dispose(), [tex]);
+  return (
+    <mesh>
+      <planeGeometry args={[chart.width * scale, chart.height * scale]} />
+      <meshStandardMaterial map={tex} roughness={0.85} />
+    </mesh>
+  );
 }

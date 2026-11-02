@@ -9,7 +9,7 @@ import { useLayoutEffect, useMemo, useRef } from "react";
 import { Color, type DirectionalLight, type Fog, type Group, type HemisphereLight, type PointLight } from "three";
 import { Balloons, Birds, FerrisWheel, Fireworks, Postcards, Ramps } from "./attractions";
 import { groundHeight } from "./island";
-import { DistrictMarkers, Landmarks } from "./landmarks";
+import { DataBoards, DistrictMarkers, Landmarks } from "./landmarks";
 import { Nature, lamps, nightMix } from "./nature";
 import { districts, toWorld } from "./places";
 import { DrivableCar } from "./cars";
@@ -214,6 +214,7 @@ export function Scene({ quality }: { quality: "high" | "low" }) {
         <Nature />
         <Landmarks />
         <DistrictMarkers />
+        <DataBoards />
         <Ramps />
         <FerrisWheel />
         <Props />

@@ -12,6 +12,7 @@ import {
   studioApps,
   type ProjectKind,
 } from "@/lib/data";
+import { KIND_HUE } from "./charts";
 import { padById } from "./island";
 
 export const COLORS = {
@@ -23,12 +24,8 @@ export const COLORS = {
   gold: "#ffc94d",
 };
 
-export const KIND_COLOR: Record<ProjectKind, string> = {
-  AI: COLORS.signal,
-  Web: COLORS.cyan,
-  Mobile: COLORS.flare,
-  Desktop: COLORS.violet,
-};
+/** Same fixed kind → hue mapping as the Main Street chart, so a tower's colour means its kind. */
+export const KIND_COLOR: Record<ProjectKind, string> = KIND_HUE;
 
 /** Players can't wander past this radius (the sea does the rest). */
 export const WORLD_EDGE = 200;
@@ -204,7 +201,7 @@ ring(stats.length, 9.5, Math.PI * 1.05, Math.PI * 0.9).forEach(([x, z], i) => {
     color: [COLORS.signal, COLORS.cyan, COLORS.flare, COLORS.violet][i % 4],
     radius: 1.1,
     size: 2.2 + i * 0.5,
-    ...at("plaza", x, z + 4, [0, 4]),
+    ...at("plaza", x, z + 4, [0, -14]),
   });
 });
 
@@ -433,7 +430,7 @@ export const postcards: Postcard[] = [
   { id: "pc-plaza", ...toWorld("plaza", -9, 6), y: 1.4, title: "Harbour Square", fact: `${stats[0].value}${stats[0].suffix} years shipping mobile, web and backend apps` },
   { id: "pc-work", ...toWorld("work", 12, 4), y: 1.4, title: "Main Street", fact: `${projects.length} products live, from ${projects[0].title} to ${projects[1].title}` },
   { id: "pc-studio", ...toWorld("studio", 0, -5), y: 1.4, title: "Boardwalk Arcade", fact: `Runs ${studio.name}: ${studioApps.length} games and apps on the stores` },
-  { id: "pc-career", ...toWorld("career", 0, 8), y: 1.4, title: "Business Park", fact: `Leads a ${stats[3].value}-member engineering team at ${experience[0].company}` },
+  { id: "pc-career", ...toWorld("career", -10, 6), y: 1.4, title: "Business Park", fact: `Leads a ${stats[3].value}-member engineering team at ${experience[0].company}` },
   { id: "pc-gallery", ...toWorld("gallery", 0, -4), y: 1.4, title: "Cert Gallery", fact: "Google Cloud certified: Associate Cloud Engineer and Professional Cloud Architect" },
   { id: "pc-signal", ...toWorld("signal", 6, 3), y: 1.4, title: "Lighthouse Point", fact: `Say hello at ${profile.email}` },
   { id: "pc-campus", ...toWorld("campus", 0, 2), y: 1.4, title: "University Hill", fact: `${education[0].title} from ${education[0].school}` },

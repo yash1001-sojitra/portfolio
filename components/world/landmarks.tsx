@@ -5,8 +5,9 @@ import { useFrame } from "@react-three/fiber";
 import { CuboidCollider, CylinderCollider } from "@react-three/rapier";
 import { Suspense, useMemo, useRef, type ReactNode } from "react";
 import { CanvasTexture, Color, DoubleSide, RepeatWrapping, SRGBColorSpace, type Group, type Mesh } from "three";
-import { districts, places, type Place } from "./places";
-import { Placard, signFor } from "./placard";
+import { districts, places, toWorld, type DistrictId, type Place } from "./places";
+import { careerChart, educationChart, projectsChart, stackChart, statTile, studioChart, type Draw } from "./charts";
+import { ChartBoard, ChartPlaque, Placard, signFor } from "./placard";
 import { useUI } from "./store";
 
 export const FONT = "/fonts/Geist-Regular.ttf";
@@ -151,25 +152,22 @@ function Monolith({ p }: { p: Place }) {
   );
 }
 
+/** Headline number on a stone plinth. All plinths share one height: the numbers have different units. */
 function Stat({ p }: { p: Place }) {
+  const tile = useMemo(() => statTile(p.title, p.eyebrow), [p.title, p.eyebrow]);
   return (
     <group>
-      <mesh position-y={p.size / 2} castShadow>
-        <cylinderGeometry args={[0.55, 0.7, p.size, 6]} />
-        <meshStandardMaterial color={DARK} flatShading metalness={0.4} roughness={0.5} />
+      <mesh position-y={0.75} castShadow receiveShadow>
+        <boxGeometry args={[1.5, 1.5, 0.7]} />
+        <meshStandardMaterial color="#d9d1c3" roughness={0.9} />
       </mesh>
-      <mesh position-y={p.size + 0.05}>
-        <cylinderGeometry args={[0.6, 0.6, 0.1, 6]} />
-        <Glow color={p.color} />
+      <mesh position-y={1.53}>
+        <boxGeometry args={[1.6, 0.06, 0.8]} />
+        <meshStandardMaterial color="#cfc6b6" roughness={0.9} />
       </mesh>
-      <Billboard position-y={p.size + 1.1}>
-        <Label size={0.9} color={p.color}>
-          {p.title}
-        </Label>
-        <Label position={[0, -0.65, 0]} size={0.24} color="#c4c9cf">
-          {p.eyebrow.toUpperCase()}
-        </Label>
-      </Billboard>
+      <group position={[0, 0.8, 0.352]}>
+        <ChartPlaque chart={tile} scale={1.12} />
+      </group>
     </group>
   );
 }
@@ -719,6 +717,40 @@ export function DistrictMarkers() {
           </group>
         );
       })}
+    </>
+  );
+}
+
+/* ───────────────────────── data boards ───────────────────────── */
+
+/** One chart per district, standing where you see it on arrival. Positions are district-local. */
+const BOARDS: { id: DistrictId; at: [number, number]; scale?: number; chart: () => Draw }[] = [
+  { id: "career", at: [0, 9.5], chart: careerChart },
+  { id: "campus", at: [-7, -10.5], scale: 0.8, chart: educationChart },
+  { id: "work", at: [-8, -12.5], scale: 0.75, chart: projectsChart },
+  { id: "studio", at: [-7.5, -11.5], scale: 0.62, chart: studioChart },
+  { id: "stack", at: [-6, -8.5], scale: 0.62, chart: stackChart },
+];
+
+export function DataBoards() {
+  const boards = useMemo(
+    () =>
+      BOARDS.map((b) => {
+        const d = districts.find((x) => x.id === b.id)!;
+        const p = toWorld(b.id, b.at[0], b.at[1]);
+        // face the arrival point, so the chart is the first thing you read
+        const a = toWorld(b.id, 0, -(d.radius - 5));
+        return { ...b, x: p.x, z: p.z, y: d.y, yaw: Math.atan2(a.x - p.x, a.z - p.z), chartData: b.chart() };
+      }),
+    [],
+  );
+  // dev-only: lets the charts be inspected flat from the console
+  if (process.env.NODE_ENV !== "production") (window as unknown as { __boards: unknown }).__boards = boards;
+  return (
+    <>
+      {boards.map((b) => (
+        <ChartBoard key={b.id} chart={b.chartData} position={[b.x, b.y, b.z]} rotationY={b.yaw} scale={b.scale} />
+      ))}
     </>
   );
 }
