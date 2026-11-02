@@ -1,0 +1,8 @@
+{
+  "hosting": {
+    "site": "yash-rank-portfolio1001",
+    "public": "out",
+    "cleanUrls": true,
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+  }
+}
