@@ -6,6 +6,7 @@ const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
 const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://yash-rank-portfolio1001.web.app"),
   title: "Yashkumar Rank — Senior Software Developer",
   description:
     "Senior Software Developer building Flutter apps, cloud-native backends on Google Cloud, and agentic AI systems. Team lead of 15 engineers.",

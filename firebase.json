@@ -3,6 +3,12 @@
     "site": "yash-rank-portfolio1001",
     "public": "out",
     "cleanUrls": true,
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "headers": [
+      {
+        "source": "/opengraph-image",
+        "headers": [{ "key": "Content-Type", "value": "image/png" }]
+      }
+    ]
   }
 }
